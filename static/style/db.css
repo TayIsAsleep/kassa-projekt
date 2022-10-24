@@ -1,0 +1,77 @@
+*{
+    margin:0;
+    padding:0;
+}
+header{
+    width: 100vw;
+    height:10vh;
+    background-color:hsl(0, 0%, 90%);
+}
+#loginBtn{
+    width: 5vw;
+    height: 8vh;
+    float:right;
+    margin-top:1vh;
+    margin-right:1vw;
+}
+
+#nav{
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+    float: left;
+}
+
+
+/*Content*/
+
+#content{
+    width: 70vw;
+    height: 80vh;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+.produkter{
+    width: 18.25vw;
+    height: 32vh;
+    background-color:hsl(0, 2%, 84%);
+    float:left;
+    margin:4vh;
+
+}
+
+#kundVagn{
+    float:right;
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+}
+
+footer{
+    width: 100vw;
+    height: 15vh;
+    background-color:hsl(0, 0%, 75%);
+    float:left;
+
+}
+header>h1{
+    float:left;
+    margin-top:1.5%;
+    margin-left:10%;
+}
+header>button{
+    float:right;
+    width:4.5vw;
+    height:8vh;
+    margin-right:5%;
+    margin-top:0.5%;
+    font-size:larger;
+
+}
+.sortobject{
+    width:15vw;
+    height:8vh;
+    margin-top:2%;
+    background-color:hsl(0, 0%, 55%);
+}
