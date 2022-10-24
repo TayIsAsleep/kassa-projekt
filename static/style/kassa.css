@@ -7,9 +7,6 @@ header{
     height:10vh;
     background-color:hsl(0, 0%, 90%);
 }
-h1{
-    display:inline;
-}
 #loginBtn{
     width: 5vw;
     height: 8vh;
@@ -24,7 +21,6 @@ h1{
     background-color: hsl(0, 0%, 95%);
     float: left;
 }
-
 
 
 /*Content*/
@@ -44,5 +40,19 @@ footer{
     height: 15vh;
     background-color:hsl(0, 0%, 75%);
     float:left;
+
+}
+header>h1{
+    float:left;
+    margin-top:1.5%;
+    margin-left:10%;
+}
+header>button{
+    float:right;
+    width:4.5vw;
+    height:8vh;
+    margin-right:5%;
+    margin-top:0.5%;
+    font-size:larger;
 
 }
