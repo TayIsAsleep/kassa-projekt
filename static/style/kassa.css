@@ -16,13 +16,11 @@ header{
 }
 header>h1{
     float:left;
-    display:inline-block;
     margin-top:1.5%;
     margin-left:10%;
 }
 header>button{
     float:right;
-    display:inline-block;
     width:4.5vw;
     height:8vh;
     margin-right:5%;
