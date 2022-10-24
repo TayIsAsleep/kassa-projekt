@@ -9,7 +9,8 @@ from flask import render_template
 app = Flask(__name__)
 
 @app.route("/")
-def root(): return "root is ok"
+def root():
+    return "root, please go to /kassa or /db"
 
 @app.route("/kassa")
 def kassa():
