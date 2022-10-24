@@ -14,3 +14,18 @@ header{
     background-color: hsl(0, 0%, 95%);
     float: left;
 }
+header>h1{
+    float:left;
+    display:inline-block;
+    margin-top:0.5%;
+    margin-left:10%;
+}
+header>button{
+    float:right;
+    display:inline-block;
+    margin-top:1%;
+    width:5vw;
+    height:4vh;
+    margin-right:10%;
+    font-size:larger;
+}
