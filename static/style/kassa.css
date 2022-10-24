@@ -83,8 +83,11 @@ header>h1{
     margin-right:5%;
     margin-top:0.5%;
     padding-top: 2vh;
+    font-family: Arial;
     text-align: center;
     font-size:larger;
+    text-shadow:1px 2px 1px black;
+    color:white;
     background-color:hsl(0, 0%, 75%);
 }
 
