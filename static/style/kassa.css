@@ -7,10 +7,42 @@ header{
     height:10vh;
     background-color:hsl(0, 0%, 90%);
 }
+h1{
+    display:inline;
+}
+#loginBtn{
+    width: 5vw;
+    height: 8vh;
+    float:right;
+    margin-top:1vh;
+    margin-right:1vw;
+}
 
 #nav{
     width: 15vw;
     height: 80vh;
     background-color: hsl(0, 0%, 95%);
     float: left;
+}
+
+
+
+/*Content*/
+.produkter{
+    width: 24vw;
+    height: 32vh;
+    background-color:hsl(0, 0%, 90%);
+    float:left;
+    margin:4vh;
+
+}
+
+
+
+footer{
+    width: 100vw;
+    height: 15vh;
+    background-color:hsl(0, 0%, 75%);
+    float:left;
+
 }
