@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -8,6 +9,7 @@ from flask import render_template
 
 app = Flask(__name__)
 
+# Page paths
 @app.route("/")
 def root():
     return "root, please go to /kassa or /db"
@@ -18,17 +20,151 @@ def kassa():
 
 @app.route("/db")
 def database():
-    hello = "test"
-    return render_template("db.html", variable_hello=hello)
+    return render_template("db.html")
 
+# Database paths
+@app.route("/db/create_item", methods=['GET', 'POST'])
+def db_create_item():
+    post_data = request.get_json(force=True)
+    new_item = {
+        "display_name": post_data['display_name'],
+        "category": post_data['category'],
+        "price": float(post_data['price']),
+        "image_src": post_data['image_src'],
+        "best_before": post_data['best_before'],
+        "product_id": post_data['product_id'],
+        "item_count": int(post_data['item_count'])
+    }
+    db = load_db(db_items_src)
+    if new_item["product_id"] in db:
+        return jsonify(-1, "item exists, cannot add again. please use other api")
+    else:
+        db[new_item["product_id"]] = new_item
+        save_db(db_items_src, db)
+        return jsonify(0, "product created")
+
+@app.route("/db/change_item_count", methods=['GET', 'POST'])
+def db_change_item_count():
+    post_data = request.get_json(force=True)
+    return jsonify(change_item_count(post_data["product_id"], int(post_data['changeby'])))
+
+@app.route("/db/get_items")
+def db_get_items():
+    return jsonify(get_items())
+
+
+@app.route("/db/get_money")
+def db_get_money():
+    return jsonify(get_money())
+
+@app.route("/db/change_money", methods=['GET', 'POST'])
+def db_change_money():
+    return jsonify(change_money(request.get_json(force=True)))
+
+
+@app.route("/db/make_purchase", methods=['GET', 'POST'])
+def db_make_purchase():
+    post_data = request.get_json(force=True)
+
+    r = change_money(post_data["pay_with_notations"])
+    if r[0] < 0:return jsonify(r)
+
+    total_cost = sum(int(x) * post_data["pay_with_notations"][x] for x in post_data["pay_with_notations"])
+    
+    items_in_stock = get_items()[1]["items"]
+    for product_id in post_data['products_bought']:
+        buy_count = post_data['products_bought'][product_id]
+        if product_id in items_in_stock:
+            if items_in_stock[product_id]["item_count"] >= buy_count:
+                change_item_count(product_id, buy_count * -1)
+
+    db_purchase_history = load_db(db_purchase_history_src)
+    db_purchase_history.append({
+        "date_of_transaction": datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
+        "products_bought": post_data['products_bought'],
+        "price_paid":{
+            "total_profit": total_cost,
+            "notations_changed": post_data["pay_with_notations"]
+        }
+    })
+    save_db(db_purchase_history_src, db_purchase_history)
+    
+    return jsonify(0, "ok")
+    
 
 if __name__ == "__main__":
     # Set working dir to path of main.py
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
+    db_items_src = "db/items.json"
+    db_cash_src = "db/cash.json"
+    db_purchase_history_src = "db/purchase_history.json"
+
+    if not os.path.isfile(db_items_src):
+        with open(db_items_src, "w") as f:
+            data = {}
+            json.dump(data, f, indent=4)
+    if not os.path.isfile(db_cash_src):
+        with open(db_cash_src, "w") as f:
+            data = {}
+            for x in ("1", "2", "5", "10", "20", "50", "100", "500", "1000"):
+                data[x] = 5
+            
+            json.dump(data, f, indent=4)       
+    if not os.path.isfile(db_purchase_history_src):
+        with open(db_purchase_history_src, "w") as f:
+            data = []
+            json.dump(data, f, indent=4)
+
+
+    def load_db(db_src):
+        with open(db_src) as f:
+            return json.load(f)
+    def save_db(db_src, data):
+        with open(db_src, "w") as f:
+            json.dump(data, f, indent=4)
+    
+    def get_items():
+        db = load_db(db_items_src)
+        categorys = []
+        [categorys.append(db[e]['category']) for e in db if not db[e]['category'] in categorys] 
+
+        return [0, {
+            "items": db,
+            "categorys": categorys
+        }]
+    def change_item_count(product_id, changeby):
+        db = load_db(db_items_src)
+
+        new_val = db[product_id]["item_count"] + int(changeby)
+        if new_val >= 0:
+            db[product_id]["item_count"] = new_val
+            save_db(db_items_src, db)
+            return [0, "product was changed, new total is next in array", db[product_id]["item_count"]]
+        else:
+            return [-1, "product total can not be less than 0, no changes was made", db[product_id]["item_count"]]
+
+    def get_money():
+        db = load_db(db_cash_src)
+        return {"types":db, "total":sum(int(x) * db[x] for x in db)}  
+    def change_money(data):
+        db = load_db(db_cash_src)
+
+        notations_changed = 0
+        for money_notation in db:
+            if money_notation in data:
+                new_value = db[money_notation] + int(data[money_notation])
+                if new_value >= 0:
+                    db[money_notation] = new_value
+                    notations_changed += 1
+                else:
+                    return [-1, "value can not be less than 0", f"affected value: {money_notation}. tried to set value to {new_value} ({data[money_notation]}) "]
+        save_db(db_cash_src, db)
+        return [0, "ok" ,f"{notations_changed} values changed"]
+
     # Start Flask
     app.run(
         host="localhost",
         port="5000",
-        debug=False
+        debug=True
     )
