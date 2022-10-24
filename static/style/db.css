@@ -38,7 +38,10 @@ header{
     background-color:hsl(0, 2%, 84%);
     float:left;
     margin:4vh;
-
+    
+}
+.produkter:hover{
+box-shadow:0 0 1vh 0.5vh gold;
 }
 
 #kundVagn{
