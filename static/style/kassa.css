@@ -1,0 +1,105 @@
+*{
+    margin:0;
+    padding:0;
+}
+header{
+    width: 100vw;
+    height:10vh;
+    background-color:hsl(0, 0%, 90%);
+}
+#loginBtn{
+    width: 5vw;
+    height: 8vh;
+    float:right;
+    margin-top:1vh;
+    margin-right:1vw;
+}
+
+#nav{
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+    float: left;
+}
+
+
+/*Content*/
+
+#content{
+    width: 70vw;
+    height: 80vh;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+.produkter{
+    width: 18.25vw;
+    height: 32vh;
+    background-color:hsl(0, 2%, 84%);
+    float:left;
+    margin:4vh;
+
+}
+.produkter:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+    }
+
+#kundVagn{
+    float:right;
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+}
+#buyBtn:hover{
+    background-color:  hsl(0, 0%,40%);
+}
+#buyBtn{
+    width: 5vw;
+    height: 5vh;
+    background-color: hsl(0, 0%, 50%);
+    float:right;
+}
+
+
+
+
+footer{
+    width: 100vw;
+    height: 15vh;
+    background-color:hsl(0, 0%, 75%);
+    float:left;
+
+}
+header>h1{
+    float:left;
+    margin-top:1.5%;
+    margin-left:10%;
+}
+#loginBtn{
+    float:right;
+    width:4.5vw;
+    height:6vh;
+    border-radius: 10px;
+    margin-right:5%;
+    margin-top:0.5%;
+    padding-top: 2vh;
+    font-family: Arial;
+    text-align: center;
+    font-size:larger;
+    text-shadow:1px 2px 1px black;
+    color:white;
+    background-color:hsl(0, 0%, 75%);
+}
+
+header>a{
+    color: black;
+}
+.sortobject{
+    width:15vw;
+    height:8vh;
+    margin-top:2%;
+    background-color:hsl(0, 0%, 55%);
+}
+.sortobject:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+}
