@@ -1,0 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+}
+header{
+    width: 100vw;
+    height:10vh;
+    background-color:hsl(0, 0%, 90%);
+}
+
+#nav{
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+    float: left;
+}
