@@ -24,8 +24,16 @@ header{
 
 
 /*Content*/
+
+#content{
+    width: 70vw;
+    height: 80vh;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
 .produkter{
-    width: 23vw;
+    width: 18.25vw;
     height: 32vh;
     background-color:hsl(0, 0%, 90%);
     float:left;
@@ -33,7 +41,12 @@ header{
 
 }
 
-
+#kundVagn{
+    float:right;
+    width: 15vw;
+    height: 80vh;
+    background-color: hsl(0, 0%, 95%);
+}
 
 footer{
     width: 100vw;
