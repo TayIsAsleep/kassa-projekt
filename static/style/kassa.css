@@ -50,13 +50,15 @@ header{
     height: 80vh;
     background-color: hsl(0, 0%, 95%);
 }
+#buyBtn:hover{
+    background-color:  hsl(0, 0%,40%);
+}
 #buyBtn{
     width: 5vw;
     height: 5vh;
     background-color: hsl(0, 0%, 50%);
     float:right;
 }
-
 
 
 
