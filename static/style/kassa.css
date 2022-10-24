@@ -17,15 +17,15 @@ header{
 header>h1{
     float:left;
     display:inline-block;
-    margin-top:0.5%;
+    margin-top:1.5%;
     margin-left:10%;
 }
 header>button{
     float:right;
     display:inline-block;
-    margin-top:1%;
-    width:5vw;
-    height:4vh;
-    margin-right:10%;
+    width:4.5vw;
+    height:8vh;
+    margin-right:5%;
+    margin-top:0.5%;
     font-size:larger;
 }
