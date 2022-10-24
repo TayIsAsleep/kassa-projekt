@@ -35,11 +35,14 @@ header{
 .produkter{
     width: 18.25vw;
     height: 32vh;
-    background-color:hsl(0, 0%, 90%);
+    background-color:hsl(0, 2%, 84%);
     float:left;
     margin:4vh;
 
 }
+.produkter:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+    }
 
 #kundVagn{
     float:right;
@@ -84,4 +87,7 @@ header>button{
     height:8vh;
     margin-top:2%;
     background-color:hsl(0, 0%, 55%);
+}
+.sortobject:hover{
+    box-shadow:0 0 1vh 0.5vh black;
 }
