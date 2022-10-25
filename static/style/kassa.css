@@ -42,6 +42,11 @@ header{
     box-shadow:0 0 1vh 0.5vh black;
     cursor: pointer;
     }
+.itemImage{
+    width: 100%;
+    height: 100%;
+}
+
 
 #kundVagn{
     float:right;
