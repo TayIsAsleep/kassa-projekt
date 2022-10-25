@@ -3,10 +3,7 @@ var vagn={
 }
 //hämtar från databasen och definerar variabler.
 //main funktion
-$.post("/db/get_items", JSON.stringify({
-    "token": readCookie("token")
-})).done(function (data){
-    
+api("/db/get_items", {}, data=>{
     Object.keys(data[1].items).forEach(e=>{
         vagn[e]=0;
         var info = data[1].items[e];
@@ -66,10 +63,7 @@ let allproducts=(data)=>{
 let kundvagn = (id) => 
 {
     // console.log(arr);
-
-    $.post("/db/get_items", JSON.stringify({
-        "token": readCookie("token")
-    })).done(function (data){
+    api("/db/get_items", {}, data=>{
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;
