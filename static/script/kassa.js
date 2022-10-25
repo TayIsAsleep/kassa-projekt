@@ -1,14 +1,13 @@
 
 $.get("/db/get_items").done(function (data){
     Object.keys(data[1].items).forEach(e=>{
-        console.log(data[1].items[e])
         var info = data[1].items[e];
         products(info);
     })
 
     $(".produkter").click(function(){
         let product_id = this.getAttribute("product_id");
-
+        kundvagn(product_id)
         
     })
 
@@ -38,8 +37,19 @@ let products=(data)=>{
 
 let kundvagn = (id) => 
 {
-    Object.keys()
     let arr=[];
     arr+=id;
-    console.log(arr);
+    // console.log(arr);
+
+    $.get("/db/get_items").done(function (data){
+        Object.keys(data[1].items).forEach(e=>{
+            console.log(data[1].items)
+            // if(e===data[1].items){
+            //     console.log("hej");
+            // }
+        });
+    });
+
+
+
 }
