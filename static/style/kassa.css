@@ -40,6 +40,7 @@ header{
 }
 .produkter:hover{
     box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
     }
 
 #kundVagn{
