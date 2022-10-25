@@ -29,6 +29,10 @@ $.get("/db/get_items").done(function (data){
         $(".Food").hide();
         $(".Drinks").show();
     }
+    else if (this.getAttribute("category") === "All"){
+        $(".Food").show();
+        $(".Drinks").show();
+    }
     })
 })
 
