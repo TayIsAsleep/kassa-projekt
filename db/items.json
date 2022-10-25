@@ -3,18 +3,18 @@
         "display_name": "Coca Cola",
         "category": "Drinks",
         "price": 5.0,
-        "image_src": "cola.png",
+        "image_src": "/static/img/123456.webp",
         "best_before": "2023-01-01",
         "product_id": "123456",
-        "item_count": 96
+        "item_count": 95
     },
     "666666": {
         "display_name": "Pulsen Toast",
         "category": "Food",
         "price": 10.0,
-        "image_src": "toast.png",
+        "image_src": "/static/img/666666.jpeg",
         "best_before": "2022-01-01",
         "product_id": "666666",
-        "item_count": 96
+        "item_count": 95
     }
 }

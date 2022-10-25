@@ -79,11 +79,12 @@ def db_make_purchase():
     
 
     total_price_to_pay = sum(db_items[x]["price"] * post_data["products_bought"][x] for x in post_data["products_bought"])
-    
-
     växel_return = växla_pengar(post_data["pay_with_notations"], total_price_to_pay)
 
-    # if växel_return
+    if växel_return[0] != 0:
+        return jsonify(växel_return)
+
+    
 
 
     items_in_stock = get_items()[1]["items"]
