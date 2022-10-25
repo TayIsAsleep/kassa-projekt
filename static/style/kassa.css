@@ -10,7 +10,6 @@ header{
 #loginBtn{
     width: 5vw;
     height: 8vh;
-    float:right;
     margin-top:1vh;
     margin-right:1vw;
 }
@@ -29,16 +28,15 @@ header{
     width: 70vw;
     height: 80vh;
     display: inline-block;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .produkter{
-    width: 18.25vw;
+    width: 18vw;
     height: 32vh;
-    background-color:hsl(0, 2%, 84%);
-    float:left;
+    background-color:hsl(0, 0%, 84%);
+    display: inline-block;
     margin:4vh;
-
 }
 .produkter:hover{
     box-shadow:0 0 1vh 0.5vh black;
@@ -49,18 +47,19 @@ header{
     width: 15vw;
     height: 80vh;
     background-color: hsl(0, 0%, 95%);
+    position: relative;
 }
 #buyBtn:hover{
     background-color:  hsl(0, 0%,40%);
 }
 #buyBtn{
     width: 5vw;
-    height: 5vh;
+    height: 7vh;
     background-color: hsl(0, 0%, 50%);
-    float:right;
+    right: 0;
+    bottom: 0;
+    position: absolute;
 }
-
-
 
 
 footer{
@@ -102,7 +101,7 @@ header>a{
 .sortobject{
     width:15vw;
     height:8vh;
-    margin-top:2%;
+    margin-top:4%;
     background-color:hsl(0, 0%, 55%);
 }
 .sortobject:hover{
