@@ -1,14 +1,13 @@
 
 $.get("/db/get_items").done(function (data){
     Object.keys(data[1].items).forEach(e=>{
-        console.log(data[1].items[e])
         var info = data[1].items[e];
         products(info);
     })
 
     $(".produkter").click(function(){
         let product_id = this.getAttribute("product_id");
-
+        kundvagn(product_id)
         
     })
 
@@ -27,7 +26,6 @@ let category=(kategori)=>{
 }
 
 let products=(data)=>{
-    console.log(data);
     var div = $("<div>").attr({"class":"produkter", "product_id": data.product_id});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
     var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
@@ -39,8 +37,19 @@ let products=(data)=>{
 
 let kundvagn = (id) => 
 {
-    Object.keys()
     let arr=[];
     arr+=id;
-    console.log(arr);
+    // console.log(arr);
+
+    $.get("/db/get_items").done(function (data){
+        Object.keys(data[1].items).forEach(e=>{
+            console.log(data[1].items)
+            // if(e===data[1].items){
+            //     console.log("hej");
+            // }
+        });
+    });
+
+
+
 }
