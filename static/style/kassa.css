@@ -38,7 +38,7 @@ header{
     margin:4vh;
 }
 .produkter:hover{
-    text-shadow: 0.5px 0.5px 1px red;
+    text-shadow: 0.5px 0.5px 1px rgb(24, 183, 241);
 }
 .itemImage{
     width: 100%;
@@ -83,6 +83,7 @@ header>h1{
     margin-top:0.5%;
     margin-left:10%;
     border:1vh black double;
+    border-radius: 10px;
     padding-left:1%;
     padding-right:1%;  
     color:white; 
@@ -93,7 +94,7 @@ header>h1{
     float:right;
     width:4.5vw;
     height:6vh;
-    border-radius: 16px;
+    border-radius: 12px;
     margin-right:5%;
     margin-top:0.5%;
     padding-top: 2vh;
@@ -107,21 +108,26 @@ header>h1{
 }
 #loginBtn:hover{
     background-color:hsl(0, 0%, 62%);
-    box-shadow:0 0 2px 0.5px red;
+    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 header>a{
     color: black;
 }
 .sortobject{
-    width:15vw;
+    width:14.9vw;
     height:8vh;
     margin-top:4%;
     background-color:hsl(0, 0%, 55%);
+    border-radius: 10px;
+    border:1px solid black;
+    text-align: center;
+    font-size:larger;
+    text-shadow: 0 0 1.5px white;
 }
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
     cursor: pointer;
-    text-shadow: 0.5px 0.5px 1px white;
+    text-shadow: 0 0 10px white;
 }
 #nav>a{
     text-decoration: none;
