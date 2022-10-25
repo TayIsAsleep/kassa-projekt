@@ -41,7 +41,7 @@ header{
     
 }
 .produkter:hover{
-box-shadow:0 0 1vh 0.5vh gold;
+box-shadow:0 0 1vh 0.5vh black;
 }
 
 #kundVagn{
@@ -77,4 +77,7 @@ header>button{
     height:8vh;
     margin-top:2%;
     background-color:hsl(0, 0%, 55%);
+}
+.sortobject:hover{
+    box-shadow:0 0 1vh 0.5vh black;
 }
