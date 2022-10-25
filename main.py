@@ -69,52 +69,83 @@ def db_change_money():
 @app.route("/db/make_purchase", methods=['GET', 'POST'])
 def db_make_purchase():
     post_data = request.get_json(force=True)
-    # print(post_data["pay_with_notations"])
-    # r = change_money(post_data["pay_with_notations"])
-    # print(r)
-    # if r[0] < 0:return jsonify(r)
-
-    db_items = load_db(db_items_src)
-
-    
-
-    total_price_to_pay = sum(db_items[x]["price"] * post_data["products_bought"][x] for x in post_data["products_bought"])
-    växel_return = växla_pengar(post_data["pay_with_notations"], total_price_to_pay)
-
-    if växel_return[0] != 0:
-        return jsonify(växel_return)
-
-    
-
 
     items_in_stock = get_items()[1]["items"]
+    
+    # Check that correct ammount of money was given and that we have växel
+    total_price_to_pay = sum(items_in_stock[x]["price"] * post_data["products_bought"][x] for x in post_data["products_bought"])
+    växel_return = växla_pengar(post_data["pay_with_notations"], total_price_to_pay)
+    if växel_return[0] < 0:
+        return jsonify(växel_return)
+    
+
+    # Check that all the items purchased are in stock
+    for item_id in post_data["products_bought"]:
+        if not item_id in items_in_stock:
+            return jsonify(-1, "item id not in db", item_id)
+        if items_in_stock[item_id]["item_count"] < post_data["products_bought"][item_id]:
+            return jsonify(-1, "not enough items in stock for item id ", item_id)
+    
+    # Change money value in the DB
+    all_money_change = {}
+    for money_n in get_money()["types"]:
+        all_money_change[money_n] = 0
+        if money_n in post_data["pay_with_notations"]:
+            all_money_change[money_n] += post_data["pay_with_notations"][money_n]
+        if money_n in växel_return[1]:
+            all_money_change[money_n] += växel_return[1][money_n] * -1
+    r = change_money(all_money_change)
+    if r[0] < 0:
+        return jsonify(r)
+
+    # Change product stock in DB
     for product_id in post_data['products_bought']:
         buy_count = post_data['products_bought'][product_id]
         if product_id in items_in_stock:
             if items_in_stock[product_id]["item_count"] >= buy_count:
                 change_item_count(product_id, buy_count * -1)
 
+    # Make purchase history and add to DB
     db_purchase_history = load_db(db_purchase_history_src)
     db_purchase_history.append({
         "date_of_transaction": datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
         "products_bought": post_data['products_bought'],
         "price_paid":{
-            "total_profit": total_cost,
+            "total_money_in": total_price_to_pay,
             "notations_changed": post_data["pay_with_notations"]
         }
     })
     save_db(db_purchase_history_src, db_purchase_history)
     
-    return jsonify(0, "ok")
+    return jsonify(0, "ok", db_purchase_history[0])
     
 
 if __name__ == "__main__":
     # Set working dir to path of main.py
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-    db_items_src = "db/items.json"
-    db_cash_src = "db/cash.json"
-    db_purchase_history_src = "db/purchase_history.json"
+    # Create options.json if it does not exist
+    if not os.path.isfile("options.json"):
+        with open("options.json", "w") as f:
+            json.dump(
+                {
+                    "host": "localhost",
+                    "port": "5000",
+                    "debug": True,
+                    "password": "password",
+                    "db_items_src": "db/items.json",
+                    "db_cash_src": "db/cash.json",
+                    "db_purchase_history_src": "db/purchase_history.json"
+                }, f, indent=4
+            )
+
+    # Load settings.json
+    with open('options.json', "r", encoding="utf-8") as f:
+        options = json.load(f)
+
+    db_items_src = options['db_items_src']
+    db_cash_src = options['db_cash_src']
+    db_purchase_history_src = options['db_purchase_history_src']
 
     if not os.path.isfile(db_items_src):
         with open(db_items_src, "w") as f:
@@ -131,7 +162,6 @@ if __name__ == "__main__":
         with open(db_purchase_history_src, "w") as f:
             data = []
             json.dump(data, f, indent=4)
-
 
     def load_db(db_src):
         with open(db_src) as f:
@@ -213,7 +243,7 @@ if __name__ == "__main__":
 
     # Start Flask
     app.run(
-        host="localhost",
-        port="5000",
-        debug=True
+        host=options['host'],
+        port=options['port'],
+        debug=options['debug']
     )
