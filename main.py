@@ -65,6 +65,10 @@ def db_get_money():
 def db_change_money():
     return jsonify(change_money(request.get_json(force=True)))
 
+@app.route("/db/calc_change", methods=['GET', 'POST'])
+def db_calc_change():
+    post_data = request.get_json(force=True)
+    return jsonify(växla_pengar(post_data['money'], post_data['total_cost'])) 
 
 @app.route("/db/make_purchase", methods=['GET', 'POST'])
 def db_make_purchase():
