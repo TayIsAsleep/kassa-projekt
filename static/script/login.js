@@ -35,8 +35,3 @@ function login(){
 
 
 
-api("/db/change_money", {
-    "20": -1
-}, data=>{
-    console.log(data);
-})
