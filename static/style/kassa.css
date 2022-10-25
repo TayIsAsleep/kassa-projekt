@@ -34,18 +34,17 @@ header{
 .produkter{
     width: 18vw;
     height: 32vh;
-    background-color:hsl(0, 0%, 84%);
     display: inline-block;
     margin:4vh;
 }
-.produkter:hover{
-    box-shadow:0 0 1vh 0.5vh black;
-    cursor: pointer;
-    }
 .itemImage{
     width: 100%;
     height: 100%;
 }
+.itemImage:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
+    }
 
 
 #kundVagn{
@@ -127,5 +126,4 @@ span{
 }
 .productname{
     background-color:rgba(0, 0, 0, 0);
-    margin-bottom:-10.7%;
 }

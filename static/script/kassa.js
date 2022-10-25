@@ -30,7 +30,7 @@ let products=(data)=>{
     console.log(data);
     var div = $("<div>").attr({"class":"produkter", "product_id": data.product_id});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
-    var name = $("<p>").attr({"class":"productname"}).add(`<span>${data.display_name}</span>`);
+    var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
     div.append(name);
     div.append(img);
     $("#content").append(div);
