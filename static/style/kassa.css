@@ -140,10 +140,15 @@ span{
 .valdProduktImage{
     width: 30%;
     height: 100%;
+    display: inline-block;
 }
 .valdaProdukter{
     width: 100%;
     height: 13%;
     background-color: orange;
     margin-top: 10px;
+    display: inline-block;
+}
+.vagnParagraph{
+    display: inline-block;
 }

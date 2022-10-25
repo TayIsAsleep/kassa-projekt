@@ -75,20 +75,24 @@ let kundvagn = (id) =>
         {
             var div = $("<div>").attr({"class":"valdaProdukter"});
             var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
-            
-            
-            div.append(img);
+            var paragraph = $("<p>").text(vagn[id]).attr({"class":"vagnParagraph", "id":id});
+            var plus= $("<button>").text("+").attr("id",`+b${id}`);
+            var minus = $("<button>").text("-").attr("id",`-b${id}`);
+            var remove= $("<button>").text("remove").attr("id",`r${id}`);
+
+
+            div.append(img,paragraph, plus, minus, remove);
             $("#kundVagn").append(div);
     
         }
         else if (vagn[id] > 1)
         {
-    
-        }
-
+            $(`#${id}`).html(vagn[id]);
+        }   
+        
     });
 
-
+    
 
 
 }
