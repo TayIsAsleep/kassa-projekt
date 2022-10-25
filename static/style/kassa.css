@@ -5,27 +5,51 @@
 header{
     width: 100vw;
     height:10vh;
-    background-color:hsl(0, 0%, 90%);
+    background:hsl(0, 0%, 90%);
+    border-bottom: 2px solid black;
 }
 #logoutBtn{
     width: 5vw;
-    height: 8vh;
-    margin-top:1vh;
+    height: 7vh;
+    margin-top:2vh;
     margin-right:1vw;
 }
 
 #nav{
     width: 15vw;
     height: 80vh;
-    background-color: hsl(0, 0%, 95%);
+    background: hsl(0, 0%, 95%);
     float: left;
+    border-right:2px solid black;
 }
-
+.sortobject{
+    width:14.9vw;
+    height:4vh;
+    margin-top:4%;
+    background:hsl(0, 0%, 55%);
+    border-radius: 10px;
+    border:1px solid black;
+    text-align: center;
+    font-size:larger;
+    text-shadow: 0 0 1.5px white;
+}
+.sortobject:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
+    text-shadow: 0 0 10px white;
+}
+#nav>a{
+    text-decoration: none;
+    font-size:x-large;
+    color:white;
+    text-shadow:1px 2px 1px black;
+    text-align:center;
+}
 
 /*Content*/
 
 #content{
-    width: 70vw;
+    width: 69vw;
     height: 80vh;
     display: inline-block;
     overflow: scroll;
@@ -54,17 +78,18 @@ header{
     float:right;
     width: 15vw;
     height: 80vh;
-    background-color: hsl(0, 0%, 95%);
+    background: hsl(0, 0%, 95%);
     position: relative;
+    border-left:2px solid black;
 }
 #buyBtn:hover{
-    background-color:  hsl(0, 0%,40%);
+    background:  hsl(0, 0%,40%);
 }
 
 #buyBtn{
     width: 5vw;
     height: 7vh;
-    background-color: hsl(0, 0%, 50%);
+    background: hsl(0, 0%, 50%);
     right: 0;
     bottom: 0;
     position: absolute;
@@ -73,15 +98,16 @@ header{
 
 footer{
     width: 100vw;
+    margin-top:-4px;
     height: 15vh;
-    background-color:hsl(0, 0%, 75%);
+    background:hsl(0, 0%, 75%);
     float:left;
-
+    border-top:2px solid black;
 }
 header>h1{
     float:left;
     margin-top:0.5%;
-    margin-left:10%;
+    margin-left:4%;
     border:1vh black double;
     border-radius: 10px;
     padding-left:1%;
@@ -103,45 +129,23 @@ header>h1{
     font-size:2.6vh;
     text-shadow:1px 2px 1px black;
     color:white;
-    background-color:hsl(0, 0%, 75%);
+    background:hsl(0, 0%, 75%);
     border: 1px solid black;
 }
 #logoutBtn:hover{
-    background-color:hsl(0, 0%, 62%);
+    background:hsl(0, 0%, 62%);
     box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 header>a{
     color: black;
 }
-.sortobject{
-    width:14.9vw;
-    height:8vh;
-    margin-top:4%;
-    background-color:hsl(0, 0%, 55%);
-    border-radius: 10px;
-    border:1px solid black;
-    text-align: center;
-    font-size:larger;
-    text-shadow: 0 0 1.5px white;
-}
-.sortobject:hover{
-    box-shadow:0 0 1vh 0.5vh black;
-    cursor: pointer;
-    text-shadow: 0 0 10px white;
-}
-#nav>a{
-    text-decoration: none;
-    font-size:x-large;
-    color:white;
-    text-shadow:1px 2px 1px black;
-    text-align:center;
-}
+
 span{
     font-size:x-large;
-    background-color:rgba(0, 0, 0, 0);
+    background:rgba(0, 0, 0, 0);
 }
 .productname{
-    background-color:rgba(0, 0, 0, 0);
+    background:rgba(0, 0, 0, 0);
 }
 .valdProduktImage{
     width: 30%;
@@ -173,7 +177,7 @@ span{
     display: inline-block;
     border: 3px ridge gray;
     margin-left: 1vw;
-    background-color: gray;
+    background: gray;
     right:0;
     position: absolute;
 }
