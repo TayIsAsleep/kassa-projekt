@@ -37,6 +37,9 @@ header{
     display: inline-block;
     margin:4vh;
 }
+.produkter:hover{
+    text-shadow: 0.5px 0.5px 1px red;
+}
 .itemImage{
     width: 100%;
     height: 100%;
@@ -113,6 +116,7 @@ header>a{
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
     cursor: pointer;
+    text-shadow: 0.5px 0.5px 1px white;
 }
 #nav>a{
     text-decoration: none;
