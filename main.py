@@ -63,7 +63,7 @@ def db_get_money():
 
 @app.route("/db/change_money", methods=['GET', 'POST'])
 def db_change_money():
-    return jsonify(change_money(request.get_json(force=True)))
+    return jsonify(change_money_in_db(request.get_json(force=True)))
 
 @app.route("/db/calc_change", methods=['GET', 'POST'])
 def db_calc_change():
@@ -98,7 +98,7 @@ def db_make_purchase():
             all_money_change[money_n] += post_data["pay_with_notations"][money_n]
         if money_n in växel_return[1]:
             all_money_change[money_n] += växel_return[1][money_n] * -1
-    r = change_money(all_money_change)
+    r = change_money_in_db(all_money_change)
     if r[0] < 0:
         return jsonify(r)
 
@@ -168,13 +168,24 @@ if __name__ == "__main__":
             json.dump(data, f, indent=4)
 
     def load_db(db_src):
+        """Loads the DB file"""
         with open(db_src) as f:
             return json.load(f)
     def save_db(db_src, data):
+        """Saves the DB file with new data"""
         with open(db_src, "w") as f:
             json.dump(data, f, indent=4)
     
     def get_items():
+        """
+            Will read and return the items currently in stock in the DB
+            Will also return the categorys seperatly
+
+            > {
+                "items": item info
+                "categorys": ["Fruits", "Drinks"....]
+            }
+        """
         db = load_db(db_items_src)
         categorys = []
         [categorys.append(db[e]['category']) for e in db if not db[e]['category'] in categorys] 
@@ -184,6 +195,15 @@ if __name__ == "__main__":
             "categorys": categorys
         }]
     def change_item_count(product_id, changeby):
+        """
+            Changes the current stock of an item in the DB
+
+            product_id: ABC123
+            changeby: 10
+
+            > [0, "product was changed, new total is next in array", 20]
+            > [code, statusmessage, stock ammount after change]
+        """
         db = load_db(db_items_src)
 
         new_val = db[product_id]["item_count"] + int(changeby)
@@ -195,9 +215,40 @@ if __name__ == "__main__":
             return [-1, "product total can not be less than 0, no changes was made", db[product_id]["item_count"]]
 
     def get_money():
+        """
+            Will read and return the money currently in the DB
+            Will also return the total ammount seperatly
+
+            > {
+                "types":{
+                    "1": 5,
+                    "2": 5,
+                    "5": 5,
+                    "10": 3,
+                    "20": 3,
+                    "50": 7,
+                    "100": 5,
+                    "500": 5,
+                    "1000": 5
+                },
+                "total": 8480
+            }
+        """
         db = load_db(db_cash_src)
         return {"types":db, "total":sum(int(x) * db[x] for x in db)}  
-    def change_money(data):
+    def change_money_in_db(data):
+        """
+            Takes in money in different sizes, and applies the changes to the DB
+            Will fail if you try to make value less than 0
+
+            data = {
+                "10": -1,
+                "5": 2
+            }
+
+            > [0, "ok", "2 values changed"]
+            > // Will remove 1 "10kr" value and add 2 "5kr" values to the DB.
+        """
         db = load_db(db_cash_src)
 
         notations_changed = 0
@@ -212,6 +263,20 @@ if __name__ == "__main__":
         save_db(db_cash_src, db)
         return [0, "ok" ,f"{notations_changed} values changed"]
     def växla_pengar(money_input, total_pay_ammount):
+        """
+            Takes in money in different sizes and takes in the total cost, and then returns
+            the ammount to return, in the correct sizes.
+
+            money_input:{
+                "20": 1,
+                "10": 1
+            }
+
+            total_pay_ammount: 25
+
+            > [0, {"5": 1}, 5]
+            > [code, {MoneySize: ammount of that type}, total change]
+        """
         money_in_db = load_db(db_cash_src)
 
         money_sizes_avaible = []

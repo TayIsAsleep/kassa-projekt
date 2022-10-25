@@ -1,8 +1,11 @@
+var vagn={
 
+}
 $.get("/db/get_items").done(function (data){
     Object.keys(data[1].items).forEach(e=>{
+        vagn[e]=0;
         var info = data[1].items[e];
-        products(info);
+        allproducts(info);
     })
 
     $(".produkter").click(function(){
@@ -37,7 +40,8 @@ let category=(kategori)=>{
     $("#nav").append(div);
 }
 
-let products=(data)=>{
+let allproducts=(data)=>{
+
     var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
     var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
@@ -47,19 +51,19 @@ let products=(data)=>{
 
 }
 
+
+
+
 let kundvagn = (id) => 
 {
-    let arr=[];
-    arr+=id;
     // console.log(arr);
 
     $.get("/db/get_items").done(function (data){
-        Object.keys(data[1].items).forEach(e=>{
-            console.log(data[1].items)
-            // if(e===data[1].items){
-            //     console.log("hej");
-            // }
-        });
+        console.log(data[1].items[id].display_name)
+    
+        vagn[id]++;
+        console.log(vagn);
+
     });
 
 
