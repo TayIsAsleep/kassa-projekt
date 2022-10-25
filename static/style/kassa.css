@@ -40,6 +40,7 @@ header{
 }
 .produkter:hover{
     box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
     }
 
 #kundVagn{
@@ -52,6 +53,7 @@ header{
 #buyBtn:hover{
     background-color:  hsl(0, 0%,40%);
 }
+
 #buyBtn{
     width: 5vw;
     height: 7vh;
