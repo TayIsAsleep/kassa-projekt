@@ -1,6 +1,7 @@
 import os
 import json
 import uuid
+import time
 import hashlib
 from datetime import datetime
 from flask import Flask
@@ -126,6 +127,46 @@ def db_make_purchase():
     return jsonify(0, "ok", db_purchase_history[0])
     
 
+@app.route("/db/login", methods=['GET', 'POST'])
+def db_login():
+    post_data = request.get_json(force=True)
+
+    verify_user_response = verify_user(post_data['username'], post_data['password'])
+    if verify_user_response[0] == 0:
+        token = generate_user_token(post_data['username'], post_data['password'])
+        if token[0] < 0:
+            return jsonify(token)
+        else:
+            return jsonify(0, {"token": token[1]})
+    else:    
+        return jsonify(verify_user_response)
+
+@app.route("/db/verify_login", methods=['GET', 'POST'])
+def db_verify_login():
+    post_data = request.get_json(force=True)
+    return jsonify(check_user_token(str(post_data["token"])))
+
+@app.route("/db/logout", methods=['GET', 'POST'])
+def db_logout():
+    try:
+        post_data = request.get_json(force=True)
+    except:
+        return """
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="/static/script/cookies.js"></script>
+            <script>
+                $.post("/db/logout", JSON.stringify({"token": readCookie("token")}));
+                eraseCookie("token");
+                location.href = "/login";
+            </script>
+        """
+    return jsonify(delete_token(post_data['token']))
+
+
+
+
+
+
 if __name__ == "__main__":
     # Set working dir to path of main.py
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -137,6 +178,8 @@ if __name__ == "__main__":
         "debug": True,
 
         "salt": uuid.uuid4().hex,
+        "login_valid_for": 10,
+
         "db_list":{
             "db_items":{
                 "src": "db/items.json",
@@ -343,10 +386,46 @@ if __name__ == "__main__":
         
         return [0, to_return, return_total]
 
-    def password_encrypt(pass_input):
+    def generate_user_token(usr_input, pass_input):
+        if not verify_user(usr_input, pass_input):
+            return -1, "Wrong password"
+        
+        pool = "admin" if load_db(db_userdata_src)[usr_input]["admin"] else "user"
+        token = string_encrypt(
+            string_encrypt(usr_input) + string_encrypt(pool) + load_db(db_userdata_src)[usr_input]["password_hash"]
+        )
+
+        user_pool[pool][token] = {
+            "valid_until": int(time.time()) + options['login_valid_for'],
+            "username": usr_input
+        }
+
+        return 0, token
+    def delete_token(user_token):
+        for pool in ("user", "admin"):
+            if user_token in user_pool[pool]:
+                del user_pool[pool][user_token]
+                return 0, "OK"
+        return -1, "token did not exist"
+    def check_user_token(user_token):
+        for pool in ("user", "admin"):
+            if user_token in user_pool[pool]:
+                if user_pool[pool][user_token]["valid_until"] < int(time.time()):
+                    del user_pool[pool][user_token]
+                    return -1, "expired"
+                else:
+                    return 0, "valid", user_pool[pool][user_token], pool
+        return -1, "does not exist" 
+
+    def string_encrypt(pass_input):
         return hashlib.pbkdf2_hmac("sha256", pass_input.encode(), options['salt'].encode(), 10000).hex()
-    def verify_password(usr_input, pass_input):
-        return password_encrypt(pass_input) == load_db(db_userdata_src)[usr_input]["password_hash"]
+    def verify_user(usr_input, pass_input):
+        db = load_db(db_userdata_src)
+        if usr_input in db:
+            if string_encrypt(pass_input) == db[usr_input]["password_hash"]:
+                return 0, "OK"
+            return -1, "Wrong password"
+        return -1, "Username does not exist"
 
     def add_user(usr_input, pass_input):
         db = load_db(db_userdata_src)
@@ -355,12 +434,18 @@ if __name__ == "__main__":
 
         db[usr_input] = {
             "username": usr_input,
-            "password_hash": password_encrypt(pass_input),
+            "password_hash": string_encrypt(pass_input),
             "admin": False
         }
 
         save_db(db_userdata_src, db)
         return 0, "OK"
+
+
+    user_pool = {
+        "admin":{},
+        "user":{}
+    }
 
     # Start Flask
     app.run(

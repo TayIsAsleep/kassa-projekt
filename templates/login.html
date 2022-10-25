@@ -6,24 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- Additional content - jquery and css -->
+    <link rel="stylesheet" href="/static/style/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../static/style/login.css">
+    <script src="/static/script/cookies.js"></script>
+    <script src="/static/script/login.js"></script>
 </head>
 <body>
     <!-- Main div -->
     <div class="form">
-        <label class="form" for="form">Login</label><br>
-        <!-- Div where all the content is -->
+        <label>Login</label>
+        <br>
         <div class="form-content">
-            <label class="form-content" for="name">Användar Namn</label><br>
-            <input class="form-content" type="text" name="namn"><br>
-            <label class="form-content" for="Lösenord">Lösenord</label><br>
-            <input class="form-content" type="password" name="pwd"><br>
-            <input class="form-content" type="submit" value="Logga in">
+            <label class="form-content" for="username">Användar Namn</label><br>
+            <input class="form-content" id="username" type="text" name="username"><br>
+            
+            <label class="form-content" for="password">Lösenord</label><br>
+            <input class="form-content" id="password" type="password" name="password"><br>
+            
+            <input class="form-content" type="submit" value="Logga in" onclick="login()">
         </div>
-        <br><br>
-        <a class="knapp" href="kassa">Tillbaka till startsida</a>
     </div>
-    <script src="../static/script/login.js"></script>
+    
 </body>
 </html>
