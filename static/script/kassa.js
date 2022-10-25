@@ -23,6 +23,7 @@ $.get("/db/get_items").done(function (data){
 
     })
 
+    //Visar endast produkter som är i den valda kategorin
    $(".sortobject").click(function(){
     if (this.getAttribute("category") === "Food"){
         $(".Food").show();
