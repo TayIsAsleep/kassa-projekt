@@ -1,0 +1,27 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+body{
+    background: hsl(209, 35%, 33%);
+}
+div.form{
+    margin-top: 15%;
+}
+div.form-content{
+    background: hsl(209, 43%, 73%);
+    margin: auto;
+    display: inline-block;
+    border: 3px ridge gray;
+    width: 15%;
+    padding: 5px;
+    margin-top: 5px;
+}
+.knapp{
+    text-decoration: none;
+    background: white;
+    padding: 3px;
+    color: black;
+    border: 2px gray ridge;
+}
