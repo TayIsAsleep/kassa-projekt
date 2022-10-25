@@ -3,7 +3,9 @@ var vagn={
 }
 //hämtar från databasen och definerar variabler.
 //main funktion
-$.get("/db/get_items").done(function (data){
+$.post("/db/get_items", JSON.stringify({
+    "token": readCookie("token")
+})).done(function (data){
     
     Object.keys(data[1].items).forEach(e=>{
         vagn[e]=0;
@@ -20,7 +22,6 @@ $.get("/db/get_items").done(function (data){
     data[1].categorys.forEach(e=>{
         console.log(e)
         category(e);
-
     })
 
     //Visar endast produkter som är i den valda kategorin
@@ -66,7 +67,9 @@ let kundvagn = (id) =>
 {
     // console.log(arr);
 
-    $.get("/db/get_items").done(function (data){
+    $.post("/db/get_items", JSON.stringify({
+        "token": readCookie("token")
+    })).done(function (data){
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;

@@ -1,5 +1,5 @@
 
-$.post("/db/verify_login", JSON.stringify({
+$.post("/db/verify_token", JSON.stringify({
     "token": readCookie("token")
 })).done(function (data){
     console.log(data);

@@ -29,6 +29,38 @@ def database():
 def login():
     return render_template("login.html")
 
+
+
+
+@app.before_request 
+def before_request_callback(): 
+    path = request.path
+
+    path_that_needs_token = (
+        "/db/create_item",
+        "/db/change_item_count",
+        "/db/get_items",
+        "/db/get_money",
+        "/db/change_money",
+        "/db/calc_change",
+        "/db/make_purchase"
+    )
+         
+    if path in path_that_needs_token: 
+        try:
+            post_data = request.get_json(force=True)
+            if not "token" in post_data:
+                return jsonify(-1, "no token in data")
+
+            if check_user_token(post_data["token"])[1] != "valid":
+                return jsonify(-1, "bad token")
+        except:
+            return jsonify(-1, "no json included, missing token")
+
+
+
+
+
 # Database paths
 @app.route("/db/create_item", methods=['GET', 'POST'])
 def db_create_item():
@@ -55,12 +87,12 @@ def db_change_item_count():
     post_data = request.get_json(force=True)
     return jsonify(change_item_count(post_data["product_id"], int(post_data['changeby'])))
 
-@app.route("/db/get_items")
+@app.route("/db/get_items", methods=['GET', 'POST'])
 def db_get_items():
     return jsonify(get_items())
 
 
-@app.route("/db/get_money")
+@app.route("/db/get_money", methods=['GET', 'POST'])
 def db_get_money():
     return jsonify(get_money())
 
@@ -141,11 +173,12 @@ def db_login():
     else:    
         return jsonify(verify_user_response)
 
-@app.route("/db/verify_login", methods=['GET', 'POST'])
-def db_verify_login():
+@app.route("/db/verify_token", methods=['GET', 'POST'])
+def db_verify_token():
     post_data = request.get_json(force=True)
     return jsonify(check_user_token(str(post_data["token"])))
 
+@app.route("/logout", methods=['GET', 'POST'])
 @app.route("/db/logout", methods=['GET', 'POST'])
 def db_logout():
     try:
