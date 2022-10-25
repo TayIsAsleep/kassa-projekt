@@ -24,4 +24,5 @@ div.form-content{
     padding: 3px;
     color: black;
     border: 2px gray ridge;
+    border-radius: 5%;
 }
