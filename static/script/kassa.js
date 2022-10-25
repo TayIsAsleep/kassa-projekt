@@ -14,19 +14,31 @@ $.get("/db/get_items").done(function (data){
     data[1].categorys.forEach(e=>{
         console.log(e)
         category(e);
+
+    })
+
+   $(".sortobject").click(function(){
+    if (this.getAttribute("category") === "Food"){
+        $(".Food").show();
+        $(".Drinks").hide();
+    }
+    else if (this.getAttribute("category") === "Drinks"){
+        $(".Food").hide();
+        $(".Drinks").show();
+    }
     })
 })
 
 
 let category=(kategori)=>{
-    var div = $("<div>").attr({"class":"sortobject"});
+    var div = $("<div>").attr({"class":"sortobject","category": kategori});
     var name = $("<h3>").html(kategori);
     div.append(name);
     $("#nav").append(div);
 }
 
 let products=(data)=>{
-    var div = $("<div>").attr({"class":"produkter", "product_id": data.product_id});
+    var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
     var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
     div.append(name);
