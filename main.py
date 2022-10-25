@@ -1,5 +1,7 @@
 import os
 import json
+import uuid
+import hashlib
 from datetime import datetime
 from flask import Flask
 from flask import request
@@ -129,43 +131,74 @@ if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
     # Create options.json if it does not exist
-    if not os.path.isfile("options.json"):
-        with open("options.json", "w") as f:
-            json.dump(
-                {
-                    "host": "localhost",
-                    "port": "5000",
-                    "debug": True,
-                    "password": "password",
-                    "db_items_src": "db/items.json",
-                    "db_cash_src": "db/cash.json",
-                    "db_purchase_history_src": "db/purchase_history.json"
-                }, f, indent=4
-            )
+    options_template = {
+        "host": "localhost",
+        "port": "5000",
+        "debug": True,
 
+        "salt": uuid.uuid4().hex,
+        "db_list":{
+            "db_items":{
+                "src": "db/items.json",
+                "default": {}
+            },
+            "db_cash":{
+                "src": "db/cash.json",
+                "default": ["1", "2", "5", "10", "20", "50", "100", "500", "1000"]
+            },
+            "db_purchase_history":{
+                "src": "db/purchase_history.json",
+                "default": []
+            },
+            "db_userdata":{
+                "src": "db/userdata.json",
+                "default": {}
+            }
+        }
+    }
+    options = options_template
+    if os.path.isfile("options.json"):
+        with open('options.json', "r", encoding="utf-8") as f:
+            try:
+                options = json.load(f)
+            except:
+                print("ERROR! options.json was empty or broken and could not be converted to JSON. Resetting all values to default.")
+                options = options_template             
+    
+    with open("options.json", "w") as f:
+        for key in options_template:
+            if not key in options:
+                print(f"WARNING! Added missing key in options.json : '{key}': {options_template[key]}")
+                options[key] = options_template[key]
+        keys_to_delete = []
+        for key in options:
+            if not key in options_template:
+                print(f"WARNING! Unused key found in options.json : '{key}': {options[key]}")
+                keys_to_delete.append(key)
+        for key in keys_to_delete:
+            del options[key]
+        json.dump(options, f, indent=4)
+    
     # Load settings.json
     with open('options.json', "r", encoding="utf-8") as f:
         options = json.load(f)
+    
+    # Check and load some DB info
+    for db_name in options['db_list']:
+        db = options['db_list'][db_name]
+        try:
+            with open(db["src"], "r") as f:
+                json.load(f)
+        except:
+            print(f"ERROR! {db['src']} was empty, broken or missing and could not be converted to JSON. Resetting all values to default.")
+            with open(db["src"], "w") as f:
+                json.dump(db["default"], f, indent=4)
 
-    db_items_src = options['db_items_src']
-    db_cash_src = options['db_cash_src']
-    db_purchase_history_src = options['db_purchase_history_src']
-
-    if not os.path.isfile(db_items_src):
-        with open(db_items_src, "w") as f:
-            data = {}
-            json.dump(data, f, indent=4)
-    if not os.path.isfile(db_cash_src):
-        with open(db_cash_src, "w") as f:
-            data = {}
-            for x in ("1", "2", "5", "10", "20", "50", "100", "500", "1000"):
-                data[x] = 5
-            
-            json.dump(data, f, indent=4)       
-    if not os.path.isfile(db_purchase_history_src):
-        with open(db_purchase_history_src, "w") as f:
-            data = []
-            json.dump(data, f, indent=4)
+    # Set python variables manually for the databases, because python gets mad if you don't
+    db_items_src = options['db_list']['db_items']['src']
+    db_cash_src = options['db_list']['db_cash']['src']
+    db_purchase_history_src = options['db_list']['db_purchase_history']['src']
+    db_userdata_src = options['db_list']['db_userdata']['src']
 
     def load_db(db_src):
         """Loads the DB file"""
@@ -309,6 +342,25 @@ if __name__ == "__main__":
             return [-1, "could not give exact change"]
         
         return [0, to_return, return_total]
+
+    def password_encrypt(pass_input):
+        return hashlib.pbkdf2_hmac("sha256", pass_input.encode(), options['salt'].encode(), 10000).hex()
+    def verify_password(usr_input, pass_input):
+        return password_encrypt(pass_input) == load_db(db_userdata_src)[usr_input]["password_hash"]
+
+    def add_user(usr_input, pass_input):
+        db = load_db(db_userdata_src)
+        if usr_input in db:
+            return -1, "Username allready exists"
+
+        db[usr_input] = {
+            "username": usr_input,
+            "password_hash": password_encrypt(pass_input),
+            "admin": False
+        }
+
+        save_db(db_userdata_src, db)
+        return 0, "OK"
 
     # Start Flask
     app.run(
