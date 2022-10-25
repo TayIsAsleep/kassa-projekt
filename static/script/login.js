@@ -10,6 +10,8 @@ $.post("/db/verify_token", JSON.stringify({
 
 })
 
+
+
 function login(){
     let username = $("#username").val();
     let password = $("#password").val();
@@ -29,3 +31,12 @@ function login(){
         }
     })
 }
+
+
+
+
+api("/db/change_money", {
+    "20": -1
+}, data=>{
+    console.log(data);
+})

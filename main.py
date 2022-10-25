@@ -52,13 +52,15 @@ def before_request_callback():
             if not "token" in post_data:
                 return jsonify(-1, "no token in data")
 
-            if check_user_token(post_data["token"])[1] != "valid":
+            token_response = check_user_token(post_data["token"])
+
+            if token_response[1] != "valid":
                 return jsonify(-1, "bad token")
+            else:
+                if token_response[3] != "admin":
+                    return jsonify(-1, "token is not ADMIN")
         except:
             return jsonify(-1, "no json included, missing token")
-
-
-
 
 
 # Database paths
@@ -194,10 +196,6 @@ def db_logout():
             </script>
         """
     return jsonify(delete_token(post_data['token']))
-
-
-
-
 
 
 if __name__ == "__main__":
