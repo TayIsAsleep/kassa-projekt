@@ -30,8 +30,6 @@ def login():
     return render_template("login.html")
 
 
-
-
 @app.before_request 
 def before_request_callback(): 
     path = request.path
@@ -45,7 +43,6 @@ def before_request_callback():
         "/db/calc_change",
         "/db/make_purchase"
     )
-         
     if path in path_that_needs_token: 
         try:
             post_data = request.get_json(force=True)
@@ -201,8 +198,8 @@ def db_logout():
 if __name__ == "__main__":
     # Set working dir to path of main.py
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
-
-    # Create options.json if it does not exist
+    
+    #region Create options.json if it does not exist
     options_template = {
         "host": "localhost",
         "port": "5000",
@@ -273,6 +270,7 @@ if __name__ == "__main__":
     db_cash_src = options['db_list']['db_cash']['src']
     db_purchase_history_src = options['db_list']['db_purchase_history']['src']
     db_userdata_src = options['db_list']['db_userdata']['src']
+    #endregion
 
     def load_db(db_src):
         """Loads the DB file"""
@@ -471,7 +469,6 @@ if __name__ == "__main__":
 
         save_db(db_userdata_src, db)
         return 0, "OK"
-
 
     user_pool = {
         "admin":{},

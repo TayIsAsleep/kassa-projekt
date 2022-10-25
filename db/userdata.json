@@ -3,5 +3,10 @@
         "username": "admin",
         "password_hash": "56700b0ce2bd3aab7edfc831e4a54ffa27218e3e7b1141d3d1459f9d35768194",
         "admin": true
+    },
+    "user": {
+        "username": "user",
+        "password_hash": "d4dc9e86eed06a881af522433c0cc239e1def50087262e7bd200aaed588ef8fa",
+        "admin": false
     }
 }
