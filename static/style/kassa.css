@@ -121,3 +121,11 @@ header>a{
     text-shadow:1px 2px 1px black;
     text-align:center;
 }
+span{
+    font-size:x-large;
+    background-color:rgba(0, 0, 0, 0);
+}
+.productname{
+    background-color:rgba(0, 0, 0, 0);
+    margin-bottom:-10.7%;
+}

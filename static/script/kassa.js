@@ -13,6 +13,8 @@ function products(data){
 
     var div = $("<div>").attr({"class":"produkter", "onclick": `kundvagn(${data})`});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
+    var name = $("<p>").attr({"class":"productname"}).add(`<span>${data.display_name}</span>`);
+    div.append(name);
     div.append(img);
     $("#content").append(div);
 
