@@ -71,6 +71,21 @@ let kundvagn = (id) =>
         vagn[id]++;
         console.log(vagn);
 
+        if(vagn[id]==1)
+        {
+            var div = $("<div>").attr({"class":"valdaProdukter"});
+            var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
+            
+            
+            div.append(img);
+            $("#kundVagn").append(div);
+    
+        }
+        else if (vagn[id] > 1)
+        {
+    
+        }
+
     });
 
 
