@@ -40,5 +40,45 @@
                 "20": 1
             }
         }
+    },
+    {
+        "date_of_transaction": "2022-10-25 09:38:45",
+        "products_bought": {
+            "123456": 1,
+            "666666": 1
+        },
+        "price_paid": {
+            "total_profit": 15,
+            "notations_changed": {
+                "5": -1,
+                "20": 1
+            }
+        }
+    },
+    {
+        "date_of_transaction": "2022-10-25 09:39:47",
+        "products_bought": {
+            "123456": 1,
+            "666666": 1
+        },
+        "price_paid": {
+            "total_profit": 20,
+            "notations_changed": {
+                "20": 1
+            }
+        }
+    },
+    {
+        "date_of_transaction": "2022-10-25 09:44:59",
+        "products_bought": {
+            "123456": 1,
+            "666666": 1
+        },
+        "price_paid": {
+            "total_profit": 20,
+            "notations_changed": {
+                "20": 1
+            }
+        }
     }
 ]

@@ -22,6 +22,10 @@ def kassa():
 def database():
     return render_template("db.html")
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
 # Database paths
 @app.route("/db/create_item", methods=['GET', 'POST'])
 def db_create_item():
@@ -65,12 +69,23 @@ def db_change_money():
 @app.route("/db/make_purchase", methods=['GET', 'POST'])
 def db_make_purchase():
     post_data = request.get_json(force=True)
+    # print(post_data["pay_with_notations"])
+    # r = change_money(post_data["pay_with_notations"])
+    # print(r)
+    # if r[0] < 0:return jsonify(r)
 
-    r = change_money(post_data["pay_with_notations"])
-    if r[0] < 0:return jsonify(r)
+    db_items = load_db(db_items_src)
 
-    total_cost = sum(int(x) * post_data["pay_with_notations"][x] for x in post_data["pay_with_notations"])
     
+
+    total_price_to_pay = sum(db_items[x]["price"] * post_data["products_bought"][x] for x in post_data["products_bought"])
+    
+
+    växel_return = växla_pengar(post_data["pay_with_notations"], total_price_to_pay)
+
+    # if växel_return
+
+
     items_in_stock = get_items()[1]["items"]
     for product_id in post_data['products_bought']:
         buy_count = post_data['products_bought'][product_id]
@@ -161,6 +176,39 @@ if __name__ == "__main__":
                     return [-1, "value can not be less than 0", f"affected value: {money_notation}. tried to set value to {new_value} ({data[money_notation]}) "]
         save_db(db_cash_src, db)
         return [0, "ok" ,f"{notations_changed} values changed"]
+    def växla_pengar(money_input, total_pay_ammount):
+        money_in_db = load_db(db_cash_src)
+
+        money_sizes_avaible = []
+        for x in money_in_db:
+            if money_in_db[x] > 0:
+                money_sizes_avaible.insert(0, [int(x), money_in_db[x]])
+        
+        to_return = {}
+        left_to_return = sum(int(x) * money_input[x] for x in money_input) - total_pay_ammount
+        return_total = left_to_return
+
+        if left_to_return == 0:
+            return [0, {}, 0, "no change needed (eaven pay)"]
+        elif left_to_return < 0:
+            return [-1, "customer payed too little! missing this much:", left_to_return * -1]
+
+        for money_size in money_sizes_avaible:
+            while left_to_return > 0 and left_to_return >= money_size[0] and money_size[1] >= 0:
+                print(money_size[1])
+                left_to_return -= money_size[0]
+                money_size[1] -= 1
+                
+                if not str(money_size[0]) in to_return:
+                    to_return[str(money_size[0])] = 1
+                else:
+                    to_return[str(money_size[0])] += 1
+        total_able_to_return = sum(int(x) * to_return[x] for x in to_return)
+        
+        if total_able_to_return != return_total:
+            return [-1, "could not give exact change"]
+        
+        return [0, to_return, return_total]
 
     # Start Flask
     app.run(
