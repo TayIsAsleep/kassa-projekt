@@ -52,6 +52,7 @@ header{
 #buyBtn:hover{
     background-color:  hsl(0, 0%,40%);
 }
+
 #buyBtn{
     width: 5vw;
     height: 7vh;
