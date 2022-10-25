@@ -76,9 +76,9 @@ let kundvagn = (id) =>
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
             var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
             var paragraph = $("<p>").text(vagn[id]).attr({"class":"vagnParagraph", "id":id});
-            var plus= $("<div>").text("+").attr({"onclick":`plus(${id})`});
-            var minus = $("<div>").text("-").attr({"onclick":`minus(${id})`});
-            var remove= $("<div>").text("remove").attr({"onclick":`remove(${id})`});
+            var plus= $("<div>").text("+").attr({"class":"vagnKnapp", "onclick":`plus(${id})`});
+            var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
+            var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
 
             div.append(img,paragraph, plus, minus, remove);
@@ -99,8 +99,13 @@ let plus = (id) =>{
 }
 
 let minus = (id) =>{
+    if(vagn[id] === 1){
+        remove(id);
+    }
+    else{
     vagn[id]--;
     $(`#${id}`).text(vagn[id]);
+    }
 }
 
 let remove = (id) =>{

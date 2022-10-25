@@ -158,3 +158,15 @@ span{
 .vagnParagraph{
     display: inline-block;
 }
+.vagnKnapp{
+    text-align: center;
+    display: inline-block;
+    border: 3px ridge gray;
+    margin-left: 1vw;
+    width: 0.75vw;
+}
+.vagnKnappR{
+    display: inline-block;
+    border: 3px ridge gray;
+    margin-left: 1vw;
+}
