@@ -147,16 +147,19 @@ span{
     width: 30%;
     height: 100%;
     display: inline-block;
+    float: left;
 }
 .valdaProdukter{
     width: 100%;
     height: 13%;
-    background-color: orange;
     margin-top: 10px;
     display: inline-block;
+    position: relative;
 }
 .vagnParagraph{
     display: inline-block;
+    float: left;
+    font-size: 250%;
 }
 .vagnKnapp{
     text-align: center;
@@ -164,9 +167,13 @@ span{
     border: 3px ridge gray;
     margin-left: 1vw;
     width: 0.75vw;
+
 }
 .vagnKnappR{
     display: inline-block;
     border: 3px ridge gray;
     margin-left: 1vw;
+    background-color: gray;
+    right:0;
+    position: absolute;
 }
