@@ -47,3 +47,26 @@ let allproducts=(data)=>{
     $("#content").append(div);
 
 }
+$("#submitbutton").submit(function(){
+    let disname = $("#displayinput");
+    let categry = $("#categoryinput");
+    let priced = $("#priceinput");
+    let imgpath = $("#imageinput");
+    let bbfdate = $("#bbinput");
+    let prodid = $("#productidinput");
+    let amount = $("#amountinput");
+    $.post("/db/create_item", JSON.stringify({
+        "display_name": disname,
+        "category": categry,
+        "price": priced,
+        "image_src": imgpath,
+        "best_before": bbfdate,
+        "product_id": prodid,
+        "item_count": amount,
+    })).done(function (data){
+        console.log(data);
+    })
+
+})
+
+
