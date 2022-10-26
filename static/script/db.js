@@ -9,18 +9,10 @@ api("/db/get_items", {}, data=>{
         var info = data[1].items[e];
         allproducts(info);
     })
-
-    $(".produkter").click(function(){
-        let product_id = this.getAttribute("product_id");
-        kundvagn(product_id)
-        
-    })
-
     data[1].categorys.forEach(e=>{
         console.log(e)
         category(e);
     })
-
     //Visar endast produkter som är i den valda kategorin
    $(".sortobject").click(function(){
     if (this.getAttribute("category") === "Food"){
@@ -37,7 +29,6 @@ api("/db/get_items", {}, data=>{
     }
     })
 })
-
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
     var div = $("<div>").attr({"class":"sortobject","category": kategori});
