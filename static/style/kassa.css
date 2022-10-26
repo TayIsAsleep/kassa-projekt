@@ -42,11 +42,11 @@ header{
 .sortobject{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
     border-radius: 5px;
-    width: 200px;
+    width: 100%;
     height: 100px;
     overflow: hidden;
+    
 }
 .itemImage{
     border-radius: 5px 5px 0 0;
@@ -74,7 +74,7 @@ header{
 
 @keyframes mymove {
     from {top: 110%; opacity:0}
-    to {top: 86%; opacity:100}
+    to {top: 83%; opacity:100}
   }
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
@@ -116,8 +116,7 @@ header{
 .itemImage:hover{
     box-shadow:0 0 1vh 0.5vh black;
     cursor: pointer;
-    }
-
+}
 
 #kundVagn{
     float:right;
@@ -141,10 +140,8 @@ header{
     color: white;
     font-size: 175%;
     text-align: center;
-    padding-top: 1.5vh;
-
+    padding-top: 1.5vh; 
 }
-
 
 footer{
     width: 100vw;
