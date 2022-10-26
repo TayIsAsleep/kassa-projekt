@@ -5,81 +5,38 @@
 header{
     width: 100vw;
     height:10vh;
-    background-color:hsl(0, 0%, 90%);
+    background:hsl(0, 0%, 90%);
+    border-bottom: 2px solid black;
 }
-#loginBtn{
+#logoutBtn{
     width: 5vw;
-    height: 8vh;
-    float:right;
-    margin-top:1vh;
+    height: 7vh;
+    margin-top:2vh;
     margin-right:1vw;
 }
 
 #nav{
     width: 15vw;
     height: 80vh;
-    background-color: hsl(0, 0%, 95%);
+    background: hsl(0, 0%, 95%);
     float: left;
-}
-
-
-/*Content*/
-
-#content{
-    width: 70vw;
-    height: 80vh;
-    display: inline-block;
-    overflow-y: scroll;
-}
-
-.produkter{
-    width: 18.25vw;
-    height: 32vh;
-    background-color:hsl(0, 2%, 84%);
-    float:left;
-    margin:4vh;
-    
-}
-.produkter:hover{
-box-shadow:0 0 1vh 0.5vh black;
-}
-
-#kundVagn{
-    float:right;
-    width: 15vw;
-    height: 80vh;
-    background-color: hsl(0, 0%, 95%);
-}
-
-footer{
-    width: 100vw;
-    height: 15vh;
-    background-color:hsl(0, 0%, 75%);
-    float:left;
-
-}
-header>h1{
-    float:left;
-    margin-top:1.5%;
-    margin-left:10%;
-}
-header>button{
-    float:right;
-    width:4.5vw;
-    height:8vh;
-    margin-right:5%;
-    margin-top:0.5%;
-    font-size:larger;
-
+    border-right:2px solid black;
 }
 .sortobject{
-    width:15vw;
-    height:8vh;
-    margin-top:2%;
-    background-color:hsl(0, 0%, 55%);
+    width:14.9vw;
+    height:4vh;
+    margin-top:4%;
+    background:hsl(0, 0%, 55%);
+    border-radius: 10px;
+    border:1px solid black;
+    text-align: center;
+    font-size:larger;
+    text-shadow: 0 0 1.5px white;
 }
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
+    text-shadow: 0 0 10px white;
 }
 #nav>a{
     text-decoration: none;
@@ -87,4 +44,119 @@ header>button{
     color:white;
     text-shadow:1px 2px 1px black;
     text-align:center;
+}
+
+/*Content*/
+
+#content{
+    width: 69vw;
+    height: 80vh;
+    display: inline-block;
+    overflow: scroll;
+}
+
+.produkter{
+    width: 18vw;
+    height: 32vh;
+    display: inline-block;
+    margin:4vh;
+}
+.produkter:hover{
+    text-shadow: 0.5px 0.5px 1px rgb(24, 183, 241);
+}
+.itemImage{
+    width: 100%;
+    height: 100%;
+}
+.itemImage:hover{
+    box-shadow:0 0 1vh 0.5vh black;
+    cursor: pointer;
+    }
+
+
+#kundVagn{
+    float:right;
+    width: 15vw;
+    height: 80vh;
+    background: hsl(0, 0%, 95%);
+    position: relative;
+    border-left:2px solid black;
+}
+#buyBtn:hover{
+    background:  hsl(0, 0%,40%);
+}
+
+#buyBtn{
+    width: 5vw;
+    height: 7vh;
+    background: hsl(0, 0%, 50%);
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+
+footer{
+    width: 100vw;
+    margin-top:-4px;
+    height: 15vh;
+    background:hsl(0, 0%, 75%);
+    float:left;
+    border-top:2px solid black;
+}
+header>h1{
+    float:left;
+    margin-top:0.5%;
+    margin-left:4%;
+    border:1vh black double;
+    border-radius: 10px;
+    padding-left:1%;
+    padding-right:1%;  
+    color:white; 
+    font-size:5.5vh;
+    text-shadow:0px 2px 3px black;
+}
+#logoutBtn{
+    float:right;
+    width:4.5vw;
+    height:6vh;
+    border-radius: 12px;
+    margin-right:5%;
+    margin-top:0.5%;
+    padding-top: 2vh;
+    font-family: Arial;
+    text-align: center;
+    font-size:2.6vh;
+    text-shadow:1px 2px 1px black;
+    color:white;
+    background:hsl(0, 0%, 75%);
+    border: 1px solid black;
+}
+#logoutBtn:hover{
+    background:hsl(0, 0%, 62%);
+    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
+}
+header>a{
+    color: black;
+}
+
+span{
+    font-size:x-large;
+    background:rgba(0, 0, 0, 0);
+}
+.productname{
+    background:rgba(0, 0, 0, 0);
+}
+.valdProduktImage{
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+}
+.valdaProdukter{
+    width: 100%;
+    height: 13%;
+    margin-top: 10px;
+    display: inline-block;
+    position: relative;
 }
