@@ -48,13 +48,13 @@ let allproducts=(data)=>{
 
 }
 $("#submitbutton").submit(function(){
-    let disname = $("#displayinput");
-    let categry = $("#categoryinput");
-    let priced = $("#priceinput");
-    let imgpath = $("#imageinput");
-    let bbfdate = $("#bbinput");
-    let prodid = $("#productidinput");
-    let amount = $("#amountinput");
+    let disname = $("#displayinput").val();
+    let categry = $("#categoryinput").val();
+    let priced = $("#priceinput").val();
+    let imgpath = $("#imageinput").val();
+    let bbfdate = $("#bbinput").val();
+    let prodid = $("#productidinput").val();
+    let amount = $("#amountinput").val();
     $.post("/db/create_item", JSON.stringify({
         "display_name": disname,
         "category": categry,
@@ -66,7 +66,6 @@ $("#submitbutton").submit(function(){
     })).done(function (data){
         console.log(data);
     })
-
 })
 
 
