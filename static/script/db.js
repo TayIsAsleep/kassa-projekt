@@ -33,7 +33,7 @@ api("/db/get_items", {}, data=>{
         let categry = $("#categoryinput").val();
         let priced = $("#priceinput").val();
         let imgpath = $("#imageinput").val();
-        let bbfdate = $("#bbinput").val();
+        let bbfdate = new Date($("#bbinput").val());
         let prodid = $("#productidinput").val();
         let amount = $("#amountinput").val();
         $.post("/db/create_item", JSON.stringify({
