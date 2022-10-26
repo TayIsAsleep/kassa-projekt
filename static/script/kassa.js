@@ -1,3 +1,4 @@
+
 var vagn={
 
 }
@@ -38,6 +39,7 @@ api("/db/get_items", {}, data=>{
     })
 })
 
+
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
     var div = $("<div>").attr({"class":"sortobject","category": kategori});
@@ -45,11 +47,13 @@ let category=(kategori)=>{
     div.append(name);
     $("#nav").append(div);
 }
+
+
 // visar allting på content
 let allproducts=(data)=>{
 
     var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
-    var div2 = $("<div>").attr({"class":"container "});
+    var div2 = $("<div>").attr({"class":"container"});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
     var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
     var price = $("<p>").attr({"class":"price"}).add(`<h1>${data.price} kr</h1>`);
@@ -60,7 +64,6 @@ let allproducts=(data)=>{
     $("#content").append(div);
 
 }
-
 
 
 //lägger till grejer till kundvagnen,
@@ -83,7 +86,7 @@ let kundvagn = (id) =>
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
 
-            div.append(img,paragraph, plus, minus, remove);
+            div.append(img,paragraph, minus, plus, remove);
             $("#kundVagn").append(div);
     
         }
