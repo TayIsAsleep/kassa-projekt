@@ -28,6 +28,28 @@ api("/db/get_items", {}, data=>{
         $(".Drinks").show();
     }
     })
+    $("#submitbutton").click(function(){
+        console.log("hi");
+        let disname = $("#displayinput").val();
+        let categry = $("#categoryinput").val();
+        let priced = $("#priceinput").val();
+        let imgpath = $("#imageinput").val();
+        let bbfdate = $("#bbinput").val();
+        let prodid = $("#productidinput").val();
+        let amount = $("#amountinput").val();
+        $.post("/db/create_item", JSON.stringify({
+            "display_name": disname,
+            "category": categry,
+            "price": priced,
+            "image_src": imgpath,
+            "best_before": bbfdate,
+            "product_id": prodid,
+            "item_count": amount,
+        })).done(function (data){
+            console.log(data);
+            console.log("bye");
+        })
+    })
 })
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
@@ -47,25 +69,6 @@ let allproducts=(data)=>{
     $("#content").append(div);
 
 }
-$("#submitbutton").submit(function(){
-    let disname = $("#displayinput").val();
-    let categry = $("#categoryinput").val();
-    let priced = $("#priceinput").val();
-    let imgpath = $("#imageinput").val();
-    let bbfdate = $("#bbinput").val();
-    let prodid = $("#productidinput").val();
-    let amount = $("#amountinput").val();
-    $.post("/db/create_item", JSON.stringify({
-        "display_name": disname,
-        "category": categry,
-        "price": priced,
-        "image_src": imgpath,
-        "best_before": bbfdate,
-        "product_id": prodid,
-        "item_count": amount,
-    })).done(function (data){
-        console.log(data);
-    })
-})
+
 
 
