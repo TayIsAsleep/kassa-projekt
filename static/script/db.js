@@ -29,7 +29,6 @@ api("/db/get_items", {}, data=>{
     }
     })
     $("#submitbutton").click(function(){
-        console.log("hi");
         let disname = $("#displayinput").val();
         let categry = $("#categoryinput").val();
         let priced = $("#priceinput").val();
@@ -47,7 +46,6 @@ api("/db/get_items", {}, data=>{
             "item_count": amount,
         })).done(function (data){
             console.log(data);
-            console.log("bye");
         })
     })
 })
