@@ -36,14 +36,14 @@ api("/db/get_items", {}, data=>{
         let bbfdate = new Date($("#bbinput").val());
         let prodid = $("#productidinput").val();
         let amount = $("#amountinput").val();
-        $.post("/db/create_item", JSON.stringify({
+        api("/db/create_item",{}, JSON.stringify({
             "display_name": disname,
             "category": categry,
             "price": priced,
             "image_src": imgpath,
             "best_before": bbfdate,
             "product_id": prodid,
-            "item_count": amount,
+            "item_count": amount
         })).done(function (data){
             console.log(data);
         })
