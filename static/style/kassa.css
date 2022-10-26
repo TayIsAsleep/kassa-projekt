@@ -2,17 +2,34 @@
     margin:0;
     padding:0;
 }
+body{
+    font-family: Arial;
+}
 header{
     width: 100vw;
     height:10vh;
     background:hsl(0, 0%, 90%);
     border-bottom: 2px solid black;
 }
+
 #logoutBtn{
-    width: 5vw;
-    height: 7vh;
-    margin-top:2vh;
-    margin-right:1vw;
+    float:right;
+    width:8vw;
+    height:5vh;
+    border-radius: 12px;
+    margin-right:3.5%;
+    margin-top:1%;
+    padding-top: 2vh;
+    text-align: center;
+    font-size:1.3rem;
+    text-shadow:1px 2px 1px black;
+    color:white;
+    background:hsl(0, 0%, 75%);
+    border: 1px solid black;
+}
+#logoutBtn:hover{
+    background:hsl(0, 0%, 62%);
+    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 
 #nav{
@@ -23,16 +40,42 @@ header{
     border-right:2px solid black;
 }
 .sortobject{
-    width:14.9vw;
-    height:4vh;
-    margin-top:4%;
-    background:hsl(0, 0%, 55%);
-    border-radius: 10px;
-    border:1px solid black;
-    text-align: center;
-    font-size:larger;
-    text-shadow: 0 0 1.5px white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
 }
+.itemImage{
+    border-radius: 5px 5px 0 0;
+}
+
+.container{
+    background-color: white;
+    position: absolute;
+    text-align: center;
+    right: 50%;
+    left: 50%;
+    top: 110%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    width: 100%;
+    border: 3px solid black;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    opacity: 0;
+
+}
+.produkter:hover .container{
+    animation: mymove 0.5s forwards;
+}
+
+@keyframes mymove {
+    from {top: 110%; opacity:0}
+    to {top: 86%; opacity:100}
+  }
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
     cursor: pointer;
@@ -60,6 +103,8 @@ header{
     height: 32vh;
     display: inline-block;
     margin:4vh;
+    overflow: hidden;
+    position: relative;;
 }
 .produkter:hover{
     text-shadow: 0.5px 0.5px 1px rgb(24, 183, 241);
@@ -83,16 +128,21 @@ header{
     border-left:2px solid black;
 }
 #buyBtn:hover{
-    background:  hsl(0, 0%,40%);
+    background:  hsl(0, 0%,50%);
 }
 
 #buyBtn{
     width: 5vw;
-    height: 7vh;
-    background: hsl(0, 0%, 50%);
+    height: 5vh;
+    background: hsl(0, 0%, 60%);
     right: 0;
     bottom: 0;
     position: absolute;
+    color: white;
+    font-size: 175%;
+    text-align: center;
+    padding-top: 1.5vh;
+
 }
 
 
@@ -100,7 +150,7 @@ footer{
     width: 100vw;
     margin-top:-4px;
     height: 15vh;
-    background:hsl(0, 0%, 75%);
+    background:hsl(0, 0%, 60%);
     float:left;
     border-top:2px solid black;
 }
@@ -115,29 +165,6 @@ header>h1{
     color:white; 
     font-size:5.5vh;
     text-shadow:0px 2px 3px black;
-}
-#logoutBtn{
-    float:right;
-    width:4.5vw;
-    height:6vh;
-    border-radius: 12px;
-    margin-right:5%;
-    margin-top:0.5%;
-    padding-top: 2vh;
-    font-family: Arial;
-    text-align: center;
-    font-size:2.6vh;
-    text-shadow:1px 2px 1px black;
-    color:white;
-    background:hsl(0, 0%, 75%);
-    border: 1px solid black;
-}
-#logoutBtn:hover{
-    background:hsl(0, 0%, 62%);
-    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
-}
-header>a{
-    color: black;
 }
 
 span{
@@ -159,6 +186,8 @@ span{
     margin-top: 10px;
     display: inline-block;
     position: relative;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 .vagnParagraph{
     display: inline-block;
