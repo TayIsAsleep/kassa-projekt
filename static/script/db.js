@@ -77,6 +77,7 @@ api("/db/get_items", {}, data=>{
         let bbfdate = new Date($("#bbinput").val());
         let prodid = $("#productidinput").val();
         let amount = $("#amountinput").val();
+        let numone = 1;
 
         api("/db/create_item",{
             "display_name": disname,
@@ -84,7 +85,7 @@ api("/db/get_items", {}, data=>{
             "price": priced,
             "image_src": imgpath,
             "best_before": bbfdate,
-            "product_id": prodid,
+            "product_id": numone + prodid,
             "item_count": amount
         }, data=>{
             console.log(data);
