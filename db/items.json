@@ -25,5 +25,14 @@
         "best_before": "2022-09-29T00:00:00.000Z",
         "product_id": "1234444",
         "item_count": 10
+    },
+    "545781": {
+        "display_name": "Snickers",
+        "category": "Snacks",
+        "price": 10.0,
+        "image_src": "/static/img/Snickers.webp",
+        "best_before": "2023-02-01T00:00:00.000Z",
+        "product_id": "545781",
+        "item_count": 18
     }
 }
