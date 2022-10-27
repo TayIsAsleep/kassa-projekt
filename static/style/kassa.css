@@ -290,7 +290,7 @@ span{
     margin-left: 1vw;
     width: 0.75vw;
     color: white;
-
+    position: absolute;
 }
 .vagnKnapp:hover{
     cursor: pointer;
