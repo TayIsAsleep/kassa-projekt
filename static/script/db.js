@@ -18,14 +18,22 @@ api("/db/get_items", {}, data=>{
     if (this.getAttribute("category") === "Food"){
         $(".Food").show();
         $(".Drinks").hide();
+        $(".Snacks").hide();
     }
     else if (this.getAttribute("category") === "Drinks"){
         $(".Food").hide();
         $(".Drinks").show();
+        $(".Snacks").hide();
     }
     else if (this.getAttribute("category") === "All"){
         $(".Food").show();
         $(".Drinks").show();
+        $(".Snacks").show();
+    }
+    else if (this.getAttribute("category") === "Snacks"){
+        $(".Food").hide();
+        $(".Drinks").hide();
+        $(".Snacks").show();
     }
     })
     $("#submitbutton").click(function(){
