@@ -35,7 +35,6 @@ api("/db/get_items", {}, data=>{
         category(e);
     })
     //Visar endast produkter som är i den valda kategorin
-<<<<<<< Updated upstream
    $(".sortobject").click(function(){
     if (this.getAttribute("category") === "Food"){
         $(".Food").show();
@@ -71,31 +70,6 @@ api("/db/get_items", {}, data=>{
     //När submitbutton klickas så tar denna funktion values för inputs
     //och sätter in dem i en json fil via python
     $("#submitbutton").click(function(){
-        let numone = 1;
-=======
-    $(".sortobject").click(function(){
-        if (this.getAttribute("category") === "Food"){
-            $(".Food").show();
-            $(".Drinks").hide();
-        }
-        else if (this.getAttribute("category") === "Drinks"){
-            $(".Food").hide();
-            $(".Drinks").show();
-        }
-        else if (this.getAttribute("category") === "All"){
-            $(".Food").show();
-            $(".Drinks").show();
-        }
-    })
-
-    $("#submitbutton").click(function(){
-        var formData = $('#kundVagn').serialize();
-
-        $.post("/db/create_item", formData).then(function(data){
-            console.log(data);
-        })
-
->>>>>>> Stashed changes
         let disname = $("#displayinput").val();
         let categry = $("#categoryinput").val();
         let priced = $("#priceinput").val();
@@ -158,13 +132,4 @@ let allproducts=(data)=>{
     div.append(img);
     div.append(div2);
     $("#content").append(div);
-
-<<<<<<< Updated upstream
 }
-
-  
-
-
-=======
-}
->>>>>>> Stashed changes
