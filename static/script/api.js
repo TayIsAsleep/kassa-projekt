@@ -5,8 +5,8 @@ function api(url, data, _callback){
         if (
             typeof(data) == typeof([]) && 
             data.length >= 2 &&
-            typeof(data[0]) == typeof(-1) && 
-            data[0] < 0
+            typeof(data[0]) == typeof(-2) && 
+            data[0] == -2
         ){
             console.log(data);
             switch (data[1]) {

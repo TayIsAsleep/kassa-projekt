@@ -13,19 +13,23 @@
         <script src="/static/script/db.js"></script>
     </head>
     <body>
-
         <header>
-            <h1>Ika</h1> 
-            <a href="/logout"><div id="logoutBtn" class="">Log out</div></a>
-            <a href="/kassa"><div id="databaseBtn">Kassa</div></a>
+            <h1>Ika - Databas</h1> 
+            <a href="/logout">
+                <div id="logoutBtn" class="">Log out</div>
+            </a>
+            <a href="/kassa">
+                <div id="databaseBtn">Kassa</div>
+            </a>
         </header>
 
         <nav id="nav"> 
-            <div class="sortobject" category="All"><h3>All</h3></div>
+            <div class="sortobject" category="All">
+                <h3>All</h3>
+            </div>
         </nav>
-        <div id="content">
-        </div>
 
+        <div id="content"></div>
         
         <div id="kundVagn">
             <h2>Add more items</h2>
@@ -36,7 +40,7 @@
             <label for="categoryinput">Category:</label>
             <br>
             <input name="categoryinput" id="categoryinput" class="srvinput" type="text">
-           <br>
+            <br>
             <label for="priceinput">Price:</label>
             <br>
             <input name="priceinput" id="priceinput" class="numinput" type="number">
@@ -58,6 +62,7 @@
             <input name="amountinput" id="amountinput" class="numinput" type="number">
             <input type="submit" id="submitbutton" value="Submit">
         </div>
+
         <footer></footer>
     </body>
 </html>
