@@ -1,4 +1,3 @@
-
 var vagn={
 
 }
@@ -92,6 +91,7 @@ let kundvagn = (id) =>
         
         
         priset = data[1].items[id].price * vagn[id];
+
         if(vagn[id]==1)
         {
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
