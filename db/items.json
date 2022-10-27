@@ -34,5 +34,14 @@
         "best_before": "2023-02-01T00:00:00.000Z",
         "product_id": "545781",
         "item_count": 18
+    },
+    "096784": {
+        "display_name": "Sprite",
+        "category": "Drinks",
+        "price": 15.0,
+        "image_src": "/static/img/sprite.jpeg",
+        "best_before": "2022-12-22T00:00:00.000Z",
+        "product_id": "096784",
+        "item_count": 25
     }
 }
