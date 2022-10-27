@@ -36,7 +36,7 @@ api("/db/get_items", {}, data=>{
         let bbfdate = new Date($("#bbinput").val());
         let prodid = $("#productidinput").val();
         let amount = $("#amountinput").val();
-        api("/db/create_item",{}, JSON.stringify({
+        api("/db/create_item",{
             "display_name": disname,
             "category": categry,
             "price": priced,
@@ -44,8 +44,12 @@ api("/db/get_items", {}, data=>{
             "best_before": bbfdate,
             "product_id": prodid,
             "item_count": amount
-        })).done(function (data){
-            console.log(data);
+        }, data=>{
+            if (data[0] != 0){
+                //display error message
+                data[1];
+            }
+        
         })
     })
 })
