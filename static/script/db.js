@@ -56,7 +56,7 @@ api("/db/get_items", {}, data=>{
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
     var div = $("<div>").attr({"class":"sortobject","category": kategori});
-    var name = $("<h3>").html(kategori);
+    var name = $("<h3>").html(kategori).attr("class","categoryText");
     div.append(name);
     $("#nav").append(div);
 }

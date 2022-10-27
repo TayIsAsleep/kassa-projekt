@@ -2,6 +2,9 @@
     margin:0;
     padding:0;
 }
+body{
+    font-family: Arial;
+}
 header{
     width: 100vw;
     height:10vh;
@@ -57,15 +60,15 @@ header{
     border-right:2px solid black;
 }
 .sortobject{
-    width:14.9vw;
-    height:4vh;
-    margin-top:4%;
-    background:hsl(0, 0%, 55%);
-    border-radius: 10px;
-    border:1px solid black;
-    text-align: center;
-    font-size:larger;
-    text-shadow: 0 0 1.5px white;
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 100%;
+    height: 10%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
 .sortobject:hover{
     box-shadow:0 0 1vh 0.5vh black;
