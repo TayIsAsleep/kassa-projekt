@@ -1,1 +1,20 @@
-{}
+{
+    "965432": {
+        "display_name": "Snickers",
+        "category": "Snacks",
+        "price": 10.0,
+        "image_src": "./static/img/product_img_965432.png",
+        "best_before": "2022-12-15T00:00:00.000Z",
+        "product_id": "965432",
+        "item_count": 10
+    },
+    "0746823": {
+        "display_name": "Sprite",
+        "category": "Drinks",
+        "price": 15.0,
+        "image_src": "./static/img/product_img_0746823.png",
+        "best_before": "2023-01-12T00:00:00.000Z",
+        "product_id": "0746823",
+        "item_count": 15
+    }
+}
