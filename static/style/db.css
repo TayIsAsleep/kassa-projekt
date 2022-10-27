@@ -9,11 +9,45 @@ header{
     border-bottom: 2px solid black;
 }
 #logoutBtn{
-    width: 5vw;
-    height: 7vh;
-    margin-top:2vh;
-    margin-right:1vw;
+    float:right;
+    width:8vw;
+    height:5vh;
+    border-radius: 12px;
+    margin-right:3.5%;
+    margin-top:1%;
+    padding-top: 2vh;
+    text-align: center;
+    font-size:1.3rem;
+    text-shadow:1px 2px 1px black;
+    color:white;
+    background:hsl(0, 0%, 75%);
+    border: 1px solid black;
 }
+#logoutBtn:hover{
+    background:hsl(0, 0%, 62%);
+    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
+}
+
+#databaseBtn{
+    float:right;
+    width:8vw;
+    height:5vh;
+    border-radius: 12px;
+    margin-right:3.5%;
+    margin-top:1%;
+    padding-top: 2vh;
+    text-align: center;
+    font-size:1.3rem;
+    text-shadow:1px 2px 1px black;
+    color:white;
+    background:hsl(0, 0%, 75%);
+    border: 1px solid black;
+}
+#databaseBtn:hover{
+    background:hsl(0, 0%, 62%);
+    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
+}
+
 
 #nav{
     width: 15vw;
@@ -115,26 +149,6 @@ header>h1{
     color:white; 
     font-size:5.5vh;
     text-shadow:0px 2px 3px black;
-}
-#logoutBtn{
-    float:right;
-    width:4.5vw;
-    height:6vh;
-    border-radius: 12px;
-    margin-right:5%;
-    margin-top:0.5%;
-    padding-top: 2vh;
-    font-family: Arial;
-    text-align: center;
-    font-size:2.6vh;
-    text-shadow:1px 2px 1px black;
-    color:white;
-    background:hsl(0, 0%, 75%);
-    border: 1px solid black;
-}
-#logoutBtn:hover{
-    background:hsl(0, 0%, 62%);
-    box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 header>a{
     color: black;

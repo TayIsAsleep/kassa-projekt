@@ -18,7 +18,7 @@ api("/db/get_items", {}, data=>{
     })
 
     data[1].categorys.forEach(e=>{
-        console.log(e)
+        // console.log(e)
         category(e);
     })
 
@@ -69,26 +69,29 @@ let allproducts=(data)=>{
 //lägger till grejer till kundvagnen,
 let kundvagn = (id) => 
 {
-    // console.log(arr);
+
     api("/db/get_items", {}, data=>{
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;
-        console.log(vagn);
-
+        // console.log(vagn);
+        
+        var priset = data[1].items[id].price * vagn[id];
+        console.log(priset);
         if(vagn[id]==1)
         {
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
             var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
+            var price = $("<p>").attr({"class":`vagnPris pris${id}`}).text(priset+"kr");
             var paragraph = $("<p>").text(vagn[id]).attr({"class":"vagnParagraph", "id":id});
             var plus= $("<div>").text("+").attr({"class":"vagnKnapp", "onclick":`plus(${id})`});
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
 
-            div.append(img,paragraph, minus, plus, remove);
+            div.append(img,paragraph,price, minus, plus, remove);
             $("#kundVagn").append(div);
-    
+
         }
         else if (vagn[id] > 1)
         {
