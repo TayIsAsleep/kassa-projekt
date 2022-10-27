@@ -19,21 +19,31 @@ api("/db/get_items", {}, data=>{
         $(".Food").show();
         $(".Drinks").hide();
         $(".Snacks").hide();
+        $(".Others").hide();
     }
     else if (this.getAttribute("category") === "Drinks"){
         $(".Food").hide();
         $(".Drinks").show();
         $(".Snacks").hide();
+        $(".Others").hide();
     }
     else if (this.getAttribute("category") === "All"){
         $(".Food").show();
         $(".Drinks").show();
         $(".Snacks").show();
+        $(".Others").show();
     }
     else if (this.getAttribute("category") === "Snacks"){
         $(".Food").hide();
         $(".Drinks").hide();
         $(".Snacks").show();
+        $(".Others").hide();
+    }
+    else if (this.getAttribute("category") === "Others"){
+        $(".Food").hide();
+        $(".Drinks").hide();
+        $(".Snacks").hide();
+        $(".Others").show();
     }
     })
     $("#submitbutton").click(function(){
