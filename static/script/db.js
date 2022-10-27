@@ -46,7 +46,10 @@ api("/db/get_items", {}, data=>{
         $(".Others").show();
     }
     })
+    //När submitbutton klickas så tar denna funktion values för inputs
+    //och sätter in dem i en json fil via python
     $("#submitbutton").click(function(){
+        let numone = 1;
         let disname = $("#displayinput").val();
         let categry = $("#categoryinput").val();
         let priced = $("#priceinput").val();
@@ -60,7 +63,7 @@ api("/db/get_items", {}, data=>{
             "price": priced,
             "image_src": imgpath,
             "best_before": bbfdate,
-            "product_id": prodid,
+            "product_id": numone + prodid,
             "item_count": amount
         }, data=>{
             if (data[0] != 0){
