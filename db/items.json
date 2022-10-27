@@ -16,5 +16,14 @@
         "best_before": "2022-01-01",
         "product_id": "666666",
         "item_count": 99
+    },
+    "1234444": {
+        "display_name": "Twix",
+        "category": "Snacks",
+        "price": 10.0,
+        "image_src": "/static/img/twix.webp",
+        "best_before": "2022-09-29T00:00:00.000Z",
+        "product_id": "1234444",
+        "item_count": 10
     }
 }
