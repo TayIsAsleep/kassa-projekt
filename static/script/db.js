@@ -101,10 +101,10 @@ api("/db/get_items", {}, data=>{
     $("changebutton").click(function(){
       let productidchange = $("#prodidadd").val();
       let changeby = $("#changeby").val();
-      $.post("/db/change_item_count",({
+      api("/db/change_item_count",{
         "product_id": productidchange,
         "changeby": changeby,
-    }))}, data=>{
+    })}, data=>{
         if (data[0] != 0){
             //display error message
             data[1];
