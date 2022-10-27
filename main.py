@@ -47,17 +47,17 @@ def before_request_callback():
         try:
             post_data = request.get_json(force=True)
             if not "token" in post_data:
-                return jsonify(-1, "no token in data")
+                return jsonify(-2, "no token in data")
 
             token_response = check_user_token(post_data["token"])
 
             if token_response[1] != "valid":
-                return jsonify(-1, "bad token")
+                return jsonify(-2, "bad token")
             else:
                 if token_response[3] != "admin":
-                    return jsonify(-1, "token is not ADMIN")
+                    return jsonify(-2, "token is not ADMIN")
         except:
-            return jsonify(-1, "no json included, missing token")
+            return jsonify(-2, "no json included, missing token")
 
 
 # Database paths
