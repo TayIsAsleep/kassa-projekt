@@ -73,10 +73,19 @@ api("/db/get_items", {}, data=>{
         
         })
     })
+    //funkar inte
     $("changebutton").click(function(){
       let productidchange = $("#prodidadd").val();
       let changeby = $("#changeby").val();
-      api("/db/change_item_count", {productidchange, changeby});
+      $.post("/db/change_item_count",({
+        "product_id": productidchange,
+        "changeby": changeby,
+    }))}, data=>{
+        if (data[0] != 0){
+            //display error message
+            data[1];
+        }
+    
     })
 })
 //lägger till kategorierna från databasen
