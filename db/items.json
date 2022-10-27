@@ -1,1 +1,11 @@
-{}
+{
+    "1949812": {
+        "display_name": "Strutskopter",
+        "category": "Others",
+        "price": 100.0,
+        "image_src": "./static/img/product_img_1949812.png",
+        "best_before": "2022-12-29T00:00:00.000Z",
+        "product_id": "1949812",
+        "item_count": 10
+    }
+}
