@@ -69,7 +69,7 @@ let allproducts=(data)=>{
     div2.append(price);
     div.append(img);
     div.append(div2);
-    $("#content").append(div);
+    $("#allaprodukter").append(div);
 
 }
 
@@ -77,14 +77,14 @@ let allproducts=(data)=>{
 //lägger till grejer till kundvagnen,
 let kundvagn = (id) => 
 {
-
+    var priset;
     api("/db/get_items", {}, data=>{
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;
         // console.log(vagn);
         
-        var priset = data[1].items[id].price * vagn[id];
+        priset = data[1].items[id].price * vagn[id];
         console.log(priset);
         if(vagn[id]==1)
         {
@@ -104,6 +104,7 @@ let kundvagn = (id) =>
         else if (vagn[id] > 1)
         {
             $(`#${id}`).html(vagn[id]);
+            $(`.pris${id}`).text(priset+"kr");
         }   
         
     });
@@ -112,6 +113,7 @@ let kundvagn = (id) =>
 let plus = (id) =>{
     vagn[id]++;
     $(`#${id}`).text(vagn[id]);
+    $(`.pris${id}`).text(priset+"kr");
 }
 
 let minus = (id) =>{
@@ -121,6 +123,7 @@ let minus = (id) =>{
     else{
     vagn[id]--;
     $(`#${id}`).text(vagn[id]);
+    $(`.pris${id}`).text(priset+"kr");
     }
 }
 
