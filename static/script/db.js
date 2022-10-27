@@ -126,7 +126,7 @@ let allproducts=(data)=>{
     var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
     var div2 = $("<div>").attr({"class":"container"});
     var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
-    var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
+    var name = $("<p>").attr({"class":"productname"}).add(`<p>${data.best_before}</p><h4>Stock:${data.item_count}</h4><h1>${data.display_name}</h1>`);
     var price = $("<p>").attr({"class":"price"}).add(`<h1>${data.price} kr</h1>`);
     div2.append(name);
     div2.append(price);

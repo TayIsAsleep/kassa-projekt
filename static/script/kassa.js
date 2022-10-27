@@ -100,7 +100,7 @@ let kundvagn = (id) =>
         console.log(vagn);
         
         
-        priset = data[1].items[id].price * vagn[id];
+        priset = data[1].items[id].price;
 
         if(vagn[id]==1)
         {
@@ -112,6 +112,7 @@ let kundvagn = (id) =>
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
+            
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
