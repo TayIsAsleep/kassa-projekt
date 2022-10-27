@@ -84,7 +84,7 @@ api("/db/get_items", {}, data=>{
             "price": priced,
             "image_src": imgpath,
             "best_before": bbfdate,
-            "product_id": numone + prodid,
+            "product_id": prodid,
             "item_count": amount
         }, data=>{
             console.log(data);
