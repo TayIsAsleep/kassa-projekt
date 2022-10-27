@@ -59,33 +59,39 @@ let category=(kategori)=>{
 
 // visar allting på content
 let allproducts=(data)=>{
+    if(data.item_count == 0)
+    {
 
-    var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
-    var div2 = $("<div>").attr({"class":"container"});
-    var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
-    var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
-    var price = $("<p>").attr({"class":"price"}).add(`<h1>${data.price} kr</h1>`);
-    div2.append(name);
-    div2.append(price);
-    div.append(img);
-    div.append(div2);
-    $("#allaprodukter").append(div);
+    }
+    else
+    {
+        var div = $("<div>").attr({"class":"produkter " + `${data.category}`,"product_id": data.product_id});
+        var div2 = $("<div>").attr({"class":"container"});
+        var img = $("<img>").attr({"src": data.image_src, "class":"itemImage"});
+        var name = $("<p>").attr({"class":"productname"}).add(`<h1>${data.display_name}</h1>`);
+        var price = $("<p>").attr({"class":"price"}).add(`<h1>${data.price} kr</h1>`);
+        div2.append(name);
+        div2.append(price);
+        div.append(img);
+        div.append(div2);
+        $("#allaprodukter").append(div);
+    }
 
 }
 
-
+var priset;
 //lägger till grejer till kundvagnen,
 let kundvagn = (id) => 
 {
-    var priset;
+
     api("/db/get_items", {}, data=>{
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;
-        // console.log(vagn);
+        console.log(vagn);
         
         priset = data[1].items[id].price * vagn[id];
-        console.log(priset);
+
         if(vagn[id]==1)
         {
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
@@ -104,16 +110,16 @@ let kundvagn = (id) =>
         else if (vagn[id] > 1)
         {
             $(`#${id}`).html(vagn[id]);
+            priset = data[1].items[id].price * vagn[id];
             $(`.pris${id}`).text(priset+"kr");
         }   
-        
     });
 }
 
 let plus = (id) =>{
     vagn[id]++;
     $(`#${id}`).text(vagn[id]);
-    $(`.pris${id}`).text(priset+"kr");
+    $(`.pris${id}`).text(priset * vagn[id]+"kr");
 }
 
 let minus = (id) =>{
@@ -123,7 +129,7 @@ let minus = (id) =>{
     else{
     vagn[id]--;
     $(`#${id}`).text(vagn[id]);
-    $(`.pris${id}`).text(priset+"kr");
+    $(`.pris${id}`).text(priset * vagn[id]+"kr");
     }
 }
 
