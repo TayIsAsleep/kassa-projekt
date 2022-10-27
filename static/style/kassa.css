@@ -131,6 +131,7 @@ header{
     overflow: hidden;
     position: relative;;
     border: 2px solid black;
+    border-radius: 10px;
 }
 .produkter:hover{
     text-shadow: 0.5px 0.5px 1px rgb(24, 183, 241);
@@ -225,6 +226,9 @@ span{
     width: 0.75vw;
 
 }
+.vagnKnapp:hover{
+    cursor: pointer;
+}
 .vagnKnappR{
     display: inline-block;
     border: 3px ridge gray;
@@ -232,6 +236,9 @@ span{
     background: gray;
     right:0;
     position: absolute;
+}
+.vagnKnappR:hover{
+    cursor:pointer;
 }
 .vagnPris{
     font-size: 150%;

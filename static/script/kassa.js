@@ -90,8 +90,8 @@ let kundvagn = (id) =>
         vagn[id]++;
         console.log(vagn);
         
+        
         priset = data[1].items[id].price * vagn[id];
-
         if(vagn[id]==1)
         {
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
@@ -102,7 +102,8 @@ let kundvagn = (id) =>
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
-
+            let summa =+ $(`.pris${id}`).val();
+            console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
             $("#kundVagn").append(div);
 
@@ -120,6 +121,7 @@ let plus = (id) =>{
     vagn[id]++;
     $(`#${id}`).text(vagn[id]);
     $(`.pris${id}`).text(priset * vagn[id]+"kr");
+    console.log(vagn);
 }
 
 let minus = (id) =>{
