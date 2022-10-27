@@ -1,6 +1,27 @@
 var vagn={
 
 }
+
+let base64String = "";
+function imageUploaded() {
+    var file = document.querySelector(
+        'input[type=file]')['files'][0];
+  
+    var reader = new FileReader();
+    console.log("next");
+      
+    reader.onload = function () {
+        base64String = reader.result.replace("data:", "")
+            .replace(/^.+,/, "");
+  
+        imageBase64Stringsep = base64String;
+  
+        // alert(imageBase64Stringsep);
+        console.log(base64String);
+    }
+    reader.readAsDataURL(file);
+}
+  
 //hämtar från databasen och definerar variabler.
 //main funktion
 api("/db/get_items", {}, data=>{
@@ -14,6 +35,7 @@ api("/db/get_items", {}, data=>{
         category(e);
     })
     //Visar endast produkter som är i den valda kategorin
+<<<<<<< Updated upstream
    $(".sortobject").click(function(){
     if (this.getAttribute("category") === "Food"){
         $(".Food").show();
@@ -50,13 +72,38 @@ api("/db/get_items", {}, data=>{
     //och sätter in dem i en json fil via python
     $("#submitbutton").click(function(){
         let numone = 1;
+=======
+    $(".sortobject").click(function(){
+        if (this.getAttribute("category") === "Food"){
+            $(".Food").show();
+            $(".Drinks").hide();
+        }
+        else if (this.getAttribute("category") === "Drinks"){
+            $(".Food").hide();
+            $(".Drinks").show();
+        }
+        else if (this.getAttribute("category") === "All"){
+            $(".Food").show();
+            $(".Drinks").show();
+        }
+    })
+
+    $("#submitbutton").click(function(){
+        var formData = $('#kundVagn').serialize();
+
+        $.post("/db/create_item", formData).then(function(data){
+            console.log(data);
+        })
+
+>>>>>>> Stashed changes
         let disname = $("#displayinput").val();
         let categry = $("#categoryinput").val();
         let priced = $("#priceinput").val();
-        let imgpath = $("#imageinput").val();
+        let imgpath = base64String;
         let bbfdate = new Date($("#bbinput").val());
         let prodid = $("#productidinput").val();
         let amount = $("#amountinput").val();
+
         api("/db/create_item",{
             "display_name": disname,
             "category": categry,
@@ -66,11 +113,13 @@ api("/db/get_items", {}, data=>{
             "product_id": numone + prodid,
             "item_count": amount
         }, data=>{
+            console.log(data);
             if (data[0] != 0){
-                //display error message
-                data[1];
+                alert(data);
             }
-        
+            else{
+                location.reload()
+            }
         })
     })
     //funkar inte
@@ -88,6 +137,7 @@ api("/db/get_items", {}, data=>{
     
     })
 })
+
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
     var div = $("<div>").attr({"class":"sortobject","category": kategori});
@@ -109,8 +159,12 @@ let allproducts=(data)=>{
     div.append(div2);
     $("#content").append(div);
 
+<<<<<<< Updated upstream
 }
 
   
 
 
+=======
+}
+>>>>>>> Stashed changes

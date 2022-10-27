@@ -1,7 +1,9 @@
 import os
+import re
 import json
 import uuid
 import time
+import base64
 import hashlib
 from datetime import datetime
 from flask import Flask
@@ -9,6 +11,7 @@ from flask import request
 from flask import jsonify
 from flask import Markup
 from flask import render_template
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -43,7 +46,7 @@ def before_request_callback():
         "/db/calc_change",
         "/db/make_purchase"
     )
-    if path in path_that_needs_token: 
+    if path in path_that_needs_token:
         try:
             post_data = request.get_json(force=True)
             if not "token" in post_data:
@@ -64,11 +67,20 @@ def before_request_callback():
 @app.route("/db/create_item", methods=['GET', 'POST'])
 def db_create_item():
     post_data = request.get_json(force=True)
+    
+    try:
+        imgdata = base64.b64decode(post_data['image_src'])
+        image_path = f'./static/img/product_img_{post_data["product_id"]}.png'
+        with open(image_path, 'wb') as f:
+            f.write(imgdata)
+    except:
+        return jsonify(-1, "No image uploaded")
+
     new_item = {
         "display_name": post_data['display_name'],
         "category": post_data['category'],
         "price": float(post_data['price']),
-        "image_src": post_data['image_src'],
+        "image_src": image_path,
         "best_before": post_data['best_before'],
         "product_id": post_data['product_id'],
         "item_count": int(post_data['item_count'])
@@ -474,6 +486,9 @@ if __name__ == "__main__":
         "admin":{},
         "user":{}
     }
+
+
+    generate_user_token("admin", "admin")
 
     # Start Flask
     app.run(
