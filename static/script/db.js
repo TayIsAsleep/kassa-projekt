@@ -73,6 +73,7 @@ api("/db/get_items", {}, data=>{
         
         })
     })
+    //funkar inte
     $("changebutton").click(function(){
       let productidchange = $("#prodidadd").val();
       let changeby = $("#changeby").val();
@@ -85,11 +86,8 @@ api("/db/get_items", {}, data=>{
             data[1];
         }
     
-    }
-
-    )
-    >>> [0, 'ok', '1 values changed']
     })
+})
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
     var div = $("<div>").attr({"class":"sortobject","category": kategori});
