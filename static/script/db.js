@@ -73,6 +73,11 @@ api("/db/get_items", {}, data=>{
         
         })
     })
+    $("changebutton").click(function(){
+      let productidchange = $("#prodidadd").val();
+      let changeby = $("#changeby").val();
+      api("/db/change_item_count", {productidchange, changeby});
+    })
 })
 //lägger till kategorierna från databasen
 let category=(kategori)=>{
