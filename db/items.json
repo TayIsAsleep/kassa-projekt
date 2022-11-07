@@ -16,5 +16,59 @@
         "best_before": "2022-11-17T00:00:00.000Z",
         "product_id": "1200303",
         "item_count": 50
+    },
+    "1412313": {
+        "display_name": "lol",
+        "category": "Others",
+        "price": 10.1,
+        "image_src": "./static/img/product_img_1412313.png",
+        "best_before": "2022-11-10T00:00:00.000Z",
+        "product_id": "1412313",
+        "item_count": 20
+    },
+    "13123156": {
+        "display_name": "eqwewq",
+        "category": "Snacks",
+        "price": 31.0,
+        "image_src": "./static/img/product_img_13123156.png",
+        "best_before": "2022-11-18T00:00:00.000Z",
+        "product_id": "13123156",
+        "item_count": 10
+    },
+    "1313125": {
+        "display_name": "lol3",
+        "category": "Snacks",
+        "price": 10.0,
+        "image_src": "./static/img/product_img_1313125.png",
+        "best_before": "2022-12-09T00:00:00.000Z",
+        "product_id": "1313125",
+        "item_count": 30
+    },
+    "1312111": {
+        "display_name": "kakak",
+        "category": "Snacks",
+        "price": 20.0,
+        "image_src": "./static/img/product_img_1312111.png",
+        "best_before": null,
+        "product_id": "1312111",
+        "item_count": 60
+    },
+    "1415901": {
+        "display_name": "poggg",
+        "category": "Snacks",
+        "price": 35.0,
+        "image_src": "./static/img/product_img_1415901.png",
+        "best_before": "2022-11-09T00:00:00.000Z",
+        "product_id": "1415901",
+        "item_count": 20
+    },
+    "1581811": {
+        "display_name": "poging",
+        "category": "Snacks",
+        "price": 13.0,
+        "image_src": "./static/img/product_img_1581811.png",
+        "best_before": "2022-11-23T00:00:00.000Z",
+        "product_id": "1581811",
+        "item_count": 18
     }
 }

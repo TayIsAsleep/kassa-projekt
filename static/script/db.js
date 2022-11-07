@@ -97,7 +97,7 @@ api("/db/get_items", {}, data=>{
             }
         })
     })
-    //funkar inte
+    //Lägger till antal produkter på en specifik produktID
     $("#changebutton").click(function(){
         let productidchange = $("#prodidadd").val();
         let changeby = $("#changeby").val();
