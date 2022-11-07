@@ -136,7 +136,7 @@ let kundvagn = (id) =>
 }
 // Ändrar värdet på p - summaP
 let summa = (ö) =>{
-    $("#summaP").html("Sum: "+ ö);
+    $("#summaP").html("Sum: "+ ö +" kr");
 }
 // Lägger till på mängden av varan man köper
 let plus = (id) =>{
