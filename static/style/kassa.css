@@ -170,6 +170,7 @@ box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
 
 .produkter{
     width: 18vw;
+    min-width: 18vh;
     height: 32vh;
     display: inline-block;
     margin:4vh;
@@ -208,12 +209,16 @@ box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
     width: 12vw;
     height: 5vh;
     background: hsl(0, 0%, 60%);
+    left: 0;
     right: 0;
     bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
     position: absolute;
-    float:right;
+    
     border-radius: 12px;
-    margin-right:3.5%;
+    
+    
     margin-top:1%;
     padding-top: 2vh;
     text-align: center;
@@ -287,21 +292,28 @@ span{
     text-align: center;
     display: inline-block;
     border: 1px ridge rgb(0, 255, 238);
+    top: 75%;
     margin-left: 1vw;
     width: 0.75vw;
-    color: white;
+    color: rgb(255, 255, 255);
     position: relative;
+    
+    
 }
 .vagnKnapp:hover{
     cursor: pointer;
 }
 .vagnKnappR{
     display: inline-block;
-    border: 3px ridge gray;
-    margin-left: 1vw;
-    background: gray;
-    right:0;
-    position: absolute;
+ background-color: #ff00005f; /* Green */
+    border: 1px solid #ff0000;
+    float: right;
+    top:0;
+    color: white;
+    border-radius: 3px;
+    width: 2vh;
+
+    text-align: center;
 }
 .vagnKnappR:hover{
     cursor:pointer;
@@ -315,9 +327,39 @@ span{
     color: white;
 }
 #summaDiv{
-    background-color: white;
-    width: 50%;
-    height: 10%;
+    width: 90%;
+    height: 5vh;
+    background: hsl(0, 0%, 60%);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    margin-top:1%;
+    padding-top: 2vh;
     text-align: center;
+    background-color: #ffffff5f; /* Green */
+    border: 1px solid #fbfbfb;
+  
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  
+  font-size: 16px;
+  
+  transition-duration: 0.4s;
+  cursor: pointer;
+    top: 85%;
+    margin: auto;
+transform: translateY(-85%);
 
+}
+.plus{
+    background-color: #00f3413a;
+    border: 1px solid #00f341;
+}
+.minus{
+    background-color: #ff000023;
+    border: 2px solid #ff0000;
 }

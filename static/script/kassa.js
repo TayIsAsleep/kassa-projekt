@@ -111,11 +111,12 @@ let kundvagn = (id) =>
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
             var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
             var price = $("<p>").attr({"class":`vagnPris pris${id}`}).text(priset+"kr");
-            var paragraph = $("<p>").text(`${vagn[id]}`).attr({"class":"vagnParagraph", "id":id});
+            var paragraph = $("<p>").text(vagn[id]).attr({"class":"vagnParagraph", "id":id});
+            var plus= $("<div>").text("+").attr({"class":"vagnKnapp plus", "onclick":`plus(${id})`});
+            var minus = $("<div>").text("-").attr({"class":"vagnKnapp minus","onclick":`minus(${id})`});
+            var remove= $("<div>").text("X").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
-            var plus= $("<div>").text("+").attr({"class":"vagnKnapp", "onclick":`plus(${id})`});
-            var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
-            var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
+            let summaP = $("<p>").text(`${total}`).attr("id","summaP");
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
