@@ -102,7 +102,7 @@ let kundvagn = (id) =>
         vagn[id]++;      
         temp = data[1];  
         total = total + data[1].items[id].price;
-        summa();
+        summa(total);
 
         if(vagn[id]==1)
         {
@@ -111,17 +111,15 @@ let kundvagn = (id) =>
             var div = $("<div>").attr({"class":`valdaProdukter ${id}`});
             var img = $("<img>").attr({"src":data[1].items[id].image_src, "class":"valdProduktImage"}); 
             var price = $("<p>").attr({"class":`vagnPris pris${id}`}).text(priset+"kr");
-            var paragraph = $("<p>").text(vagn[id]).attr({"class":"vagnParagraph", "id":id});
+            var paragraph = $("<p>").text(`${vagn[id]}`).attr({"class":"vagnParagraph", "id":id});
+
             var plus= $("<div>").text("+").attr({"class":"vagnKnapp", "onclick":`plus(${id})`});
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
-
-            let summaP = $("<p>").text(`${total}`).attr("id","summaP");
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
             $("#kundVagn").append(div);
-            $("#kundVagn").append(summaP);
 
 
         }
@@ -135,8 +133,8 @@ let kundvagn = (id) =>
         console.log(total)
     });
 }
-let summa = () =>{
-    $("#summaP").html("Sum: "+ total);
+let summa = (ö) =>{
+    $("#summaP").html("Sum: "+ ö);
 }
 let plus = (id) =>{
     total = total + temp.items[id].price;
@@ -164,6 +162,11 @@ let minus = (id) =>{
 }
 
 let remove = (id) =>{
-    vagn[id] = 0;
     $(`.${id}`).remove();
+    priset = temp.items[id].price;
+    total = total - (priset * vagn[id]);
+    console.log(total);
+    summa(total);
+    vagn[id] = 0;
+
 }
