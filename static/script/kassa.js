@@ -90,15 +90,20 @@ let allproducts=(data)=>{
 
 var priset;
 var temp;
+var total = 0;
 //lägger till grejer till kundvagnen,
 let kundvagn = (id) => 
 {
+    summa();
 
     api("/db/get_items", {}, data=>{
         console.log(data[1].items[id].display_name)
     
         vagn[id]++;      
         temp = data[1];  
+        total = total + data[1].items[id].price;
+        summa();
+
         if(vagn[id]==1)
         {
             priset = data[1].items[id].price;
@@ -111,11 +116,14 @@ let kundvagn = (id) =>
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp","onclick":`minus(${id})`});
             var remove= $("<div>").text("remove").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
-            
+            let summaP = $("<p>").text(`${total}`).attr("id","summaP");
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
             $("#kundVagn").append(div);
+            $("#kundVagn").append(summaP);
+
+
         }
         else if (vagn[id] > 1)
         {
@@ -124,9 +132,12 @@ let kundvagn = (id) =>
             priset = data[1].items[id].price * vagn[id];
             $(`.pris${id}`).text(priset+"kr");
         }   
+        console.log(total)
     });
 }
-
+let summa = () =>{
+    $("#summaP").html(total);
+}
 let plus = (id) =>{
     priset = temp.items[id].price;
     vagn[id]++;
