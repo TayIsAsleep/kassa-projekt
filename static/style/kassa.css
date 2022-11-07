@@ -292,7 +292,8 @@ span{
     text-align: center;
     display: inline-block;
     border: 1px ridge rgb(0, 255, 238);
-    top: 75%;
+    top: 90%;
+    transform: translateY(-90%);
     margin-left: 1vw;
     width: 0.75vw;
     color: rgb(255, 255, 255);
@@ -357,7 +358,7 @@ transform: translateY(-85%);
 }
 .plus{
     background-color: #00f3413a;
-    border: 1px solid #00f341;
+    border: 2px solid #00f341;
 }
 .minus{
     background-color: #ff000023;
