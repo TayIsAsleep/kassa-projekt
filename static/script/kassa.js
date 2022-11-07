@@ -134,9 +134,11 @@ let kundvagn = (id) =>
         console.log(total)
     });
 }
+// Ändrar värdet på p - summaP
 let summa = (ö) =>{
     $("#summaP").html("Sum: "+ ö);
 }
+// Lägger till på mängden av varan man köper
 let plus = (id) =>{
     total = total + temp.items[id].price;
     summa(total);
@@ -144,9 +146,8 @@ let plus = (id) =>{
     vagn[id]++;
     $(`#${id}`).text(vagn[id]);
     $(`.pris${id}`).text(priset * vagn[id]+"kr");
-    console.log(vagn);
 }
-
+// Tar bort på mängden av varan man köper
 let minus = (id) =>{        
     total = total - temp.items[id].price;
     summa(total);
@@ -161,7 +162,7 @@ let minus = (id) =>{
     $(`.pris${id}`).text(priset * vagn[id]+"kr");
     }
 }
-
+// Tar bort en vara från kundvagnen
 let remove = (id) =>{
     $(`.${id}`).remove();
     priset = temp.items[id].price;
