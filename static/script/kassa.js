@@ -139,6 +139,8 @@ let summa = () =>{
     $("#summaP").html(total);
 }
 let plus = (id) =>{
+    total = total + data[1].items[id].price;
+    summa();
     priset = temp.items[id].price;
     vagn[id]++;
     $(`#${id}`).text(vagn[id]);
@@ -146,7 +148,9 @@ let plus = (id) =>{
     console.log(vagn);
 }
 
-let minus = (id) =>{
+let minus = (id) =>{        
+    total = total - temp[1].items[id].price;
+    summa();
     priset = temp.items[id].price;
 
     if(vagn[id] === 1){
