@@ -136,7 +136,7 @@ let kundvagn = (id) =>
     });
 }
 let summa = () =>{
-    $("#summaP").html(total);
+    $("#summaP").html("Sum: "+ total);
 }
 let plus = (id) =>{
     priset = temp.items[id].price;

@@ -314,3 +314,10 @@ span{
     right: 0;
     color: white;
 }
+#summaDiv{
+    background-color: white;
+    width: 50%;
+    height: 10%;
+    text-align: center;
+
+}
