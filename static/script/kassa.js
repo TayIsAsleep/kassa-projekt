@@ -139,7 +139,7 @@ let summa = () =>{
     $("#summaP").html("Sum: "+ total);
 }
 let plus = (id) =>{
-    total = total + data[1].items[id].price;
+    total = total + temp.items[id].price;
     summa();
     priset = temp.items[id].price;
     vagn[id]++;
@@ -149,7 +149,7 @@ let plus = (id) =>{
 }
 
 let minus = (id) =>{        
-    total = total - temp[1].items[id].price;
+    total = total - temp.items[id].price;
     summa();
     priset = temp.items[id].price;
 
