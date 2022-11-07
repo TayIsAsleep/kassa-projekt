@@ -218,7 +218,7 @@ if __name__ == "__main__":
         "debug": True,
 
         "salt": uuid.uuid4().hex,
-        "login_valid_for": 10,
+        "login_valid_for": 1000000,
 
         "db_list":{
             "db_items":{
