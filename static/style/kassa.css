@@ -294,10 +294,11 @@ span{
     border: 1px ridge rgb(0, 255, 238);
     top: 90%;
     transform: translateY(-90%);
-    margin-left: 1vw;
+    left: 7vw;
+    margin-right: 1vw;
     width: 0.75vw;
     color: rgb(255, 255, 255);
-    position: relative;
+    position: absolute;
     
     
 }
@@ -363,4 +364,5 @@ transform: translateY(-85%);
 .minus{
     background-color: #ff000023;
     border: 2px solid #ff0000;
+    margin-left: 1.5vw;
 }
