@@ -360,9 +360,10 @@ transform: translateY(-85%);
 .plus{
     background-color: #00f3413a;
     border: 2px solid #00f341;
+    margin-left: 1.5vw;
 }
 .minus{
     background-color: #ff000023;
     border: 2px solid #ff0000;
-    margin-left: 1.5vw;
+    
 }
