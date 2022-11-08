@@ -137,3 +137,36 @@ let allproducts=(data)=>{
     div.append(div2);
     $("#content").append(div);
 }
+
+var dateTemp={
+    now: "2022-11-08",
+    now2: "2022-11-25",
+    now3: "2022-12-06"
+};
+var date1 = new Date();
+var year = date1.getFullYear();
+var month = date1.getMonth() +1;
+var day = String(date1.getDate()).padStart(2,'0');
+
+// Jämnför månad och skriver ut allt som säldes under den månaden
+let köpMånad = (year,month) =>{
+    var fullDate = [year,month].join("-");
+    Object.keys(dateTemp).forEach(i => {
+        if(fullDate == dateTemp[i].slice(0,-3))
+        {
+            console.log(dateTemp[i]);
+        }
+    });}
+
+// Samme som functionen ovan men jämnför dagen också.
+let köpDag = (year,month,day) =>{
+    var fullDate = [year,month,day].join("-");
+    Object.keys(dateTemp).forEach(i => {
+        if(fullDate == dateTemp[i])
+        {
+            console.log(dateTemp[i]);
+        }
+    });
+}
+köpMånad(year, month)
+köpDag(year, month,day)
