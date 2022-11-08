@@ -1,4 +1,4 @@
-var vagn={}
+let vagn={}
 
 $('#moneyExchangepage').hide();
 $("#buyBtn").click(function(e){
@@ -161,7 +161,7 @@ let kundvagn = (id) =>
         temp = data[1];  
         total = total + data[1].items[id].price;
         summa(total);
-
+console.log(vagn);
         if(vagn[id]==1)
         {
             priset = data[1].items[id].price;
@@ -174,7 +174,6 @@ let kundvagn = (id) =>
             var minus = $("<div>").text("-").attr({"class":"vagnKnapp minus","onclick":`minus(${id})`});
             var remove= $("<div>").text("X").attr({"class":"vagnKnappR","onclick":`remove(${id})`});
 
-            let summaP = $("<p>").text(`${total}`).attr("id","summaP");
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
@@ -229,3 +228,20 @@ let remove = (id) =>{
     summa(total);
     vagn[id] = 0;
 }
+// let clearAllItems=()=>{
+//     console.log("teste");
+//     $(".valdaProdukter").remove()
+//     total=0;
+//     summa(total);
+//     vagn={}
+// }
+$("#clearCart").click(function(){   
+    console.log("teste");
+$(".valdaProdukter").remove()
+total=0;
+summa(total);
+Object.keys(vagn).forEach(i =>{
+    vagn[i] = 0;
+})
+console.log(vagn);
+});

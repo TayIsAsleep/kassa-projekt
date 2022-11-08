@@ -378,17 +378,20 @@ span{
 
 #clearCart{
     width: 100%;
-    height: 6%;
+    height: 4.5%;
+    text-align: center;
+    border-radius: 15px;
+    padding-top: 3%;
 }
 
 #clear{
-    display: block;
+    display: inline;
     color: white;
-    vertical-align: middle;
-    text-align: center;
+
 }
-#clear:hover{
+#clearCart:hover{
     cursor: pointer;
+
 }
 
 #moneyExchangepage{
