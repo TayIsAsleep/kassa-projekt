@@ -1,1 +1,29 @@
-{}
+[
+    {
+        "date_of_transaction": "2022-11-08 10:54:14",
+        "products_bought": {
+            "1200303": 1
+        },
+        "price_paid": {
+            "total_money_in": 50.0,
+            "notations_changed": {
+                "50": -1,
+                "100": -4,
+                "500": 1
+            }
+        }
+    },
+    {
+        "date_of_transaction": "2022-11-08 10:54:48",
+        "products_bought": {
+            "1949812": 3
+        },
+        "price_paid": {
+            "total_money_in": 300.0,
+            "notations_changed": {
+                "100": -2,
+                "500": 1
+            }
+        }
+    }
+]

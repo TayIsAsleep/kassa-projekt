@@ -1,6 +1,64 @@
-var vagn={
+var vagn={}
 
-}
+$('#moneyExchangepage').hide();
+$("#buyBtn").click(function(e){
+    $("#total_sum_checkout").text(total)
+    $('#moneyExchangepage').show();
+})
+$('#moneyExchangepage').click(function(e){
+    if (e.target == $('#moneyExchangepage')[0]){
+        $('#moneyExchangepage').hide();
+    }
+})
+
+$('#checkout-pay').click(function(e){
+    let data_to_send = {}
+    $('.m-container > div > input').each(function(i,o){
+        let val = $(o).val();
+        val = (val == "" ? 0 : parseInt(val));
+        data_to_send[`${$(o).attr('moneyType')}`] = val;        
+    })
+
+    let vagn_new = {}
+    Object.keys(vagn).forEach(key=>{
+        if (vagn[key] != 0){
+            vagn_new[key] = vagn[key];
+        }
+    })
+
+    api("/db/make_purchase", {
+        "products_bought": vagn_new,
+        "pay_with_notations": data_to_send
+    }, data=>{
+        if (data[0] < 0){
+            if (data[1] == "customer payed too little! missing this much:"){
+                alert(`Customer did not pay enough. Missing ${data[2]}kr`)
+            }
+            else{
+                alert(data);
+            }
+        }
+        else{
+            if (data[1] == "ok"){
+                let giveCustomerMoneyVäxel = data[2]['växel'][1];
+                if (giveCustomerMoneyVäxel == {}){
+                    alert("Ingen växel betalas (Kunden betalade jämt)");
+                }
+                else{
+                    let msg = "Give money to the customer:";
+                    Object.keys(giveCustomerMoneyVäxel).forEach(notation=>{
+                        msg += `\n${notation}KR x ${giveCustomerMoneyVäxel[notation]}`;
+                    })
+                    alert(msg);
+                }
+
+                location.reload();
+            }
+        }
+    })
+})
+
+
 //hämtar från databasen och definerar variabler.
 //main funktion
 api("/db/get_items", {}, data=>{

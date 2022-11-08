@@ -367,3 +367,54 @@ transform: translateY(-85%);
     border: 2px solid #ff0000;
     
 }
+
+
+
+
+#moneyExchangepage{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#total_sum_checkout{
+    font-size: unset;
+}
+
+.exchange-container{
+    background-color: white;
+    padding: 1.5em;
+    border-radius: 12px;
+    /* width: fit-content;
+    height: fit-content; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.m-container > div{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
+}
+.m-container > div > p{
+    width: 60px;
+    text-align: end;
+}
+.m-container > div > input{
+    width: 60px;
+}
+
+.exchange-container > #checkout-pay{
+    padding: 1em;
+}

@@ -155,6 +155,14 @@ def db_make_purchase():
             if items_in_stock[product_id]["item_count"] >= buy_count:
                 change_item_count(product_id, buy_count * -1)
 
+
+    notations_changed = post_data["pay_with_notations"]
+    for key in växel_return[1]:
+        notations_changed[key] -= växel_return[1][key]
+    for key in notations_changed.copy():
+        if notations_changed[key] == 0:
+            del notations_changed[key]
+
     # Make purchase history and add to DB
     db_purchase_history = load_db(db_purchase_history_src)
     db_purchase_history.append({
@@ -162,12 +170,15 @@ def db_make_purchase():
         "products_bought": post_data['products_bought'],
         "price_paid":{
             "total_money_in": total_price_to_pay,
-            "notations_changed": post_data["pay_with_notations"]
+            "notations_changed": notations_changed
         }
     })
     save_db(db_purchase_history_src, db_purchase_history)
     
-    return jsonify(0, "ok", db_purchase_history[0])
+    return jsonify(0, "ok", {
+        'reciept': db_purchase_history[-1],
+        'växel': växel_return
+    })
     
 
 @app.route("/db/login", methods=['GET', 'POST'])
@@ -227,7 +238,7 @@ if __name__ == "__main__":
             },
             "db_cash":{
                 "src": "db/cash.json",
-                "default": ["1", "2", "5", "10", "20", "50", "100", "500", "1000"]
+                "default": {"1": 50, "2": 50, "5": 50, "10": 50, "20": 50, "50": 50, "100": 50, "500": 50, "1000": 50}
             },
             "db_purchase_history":{
                 "src": "db/purchase_history.json",
@@ -486,7 +497,6 @@ if __name__ == "__main__":
         "admin":{},
         "user":{}
     }
-
 
     generate_user_token("admin", "admin")
 

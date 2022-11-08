@@ -10,7 +10,7 @@
         <script src="/static/script/cookies.js"></script>
         <script src="/static/script/api.js"></script>
         <script src="/static/script/verify_login.js"></script>
-        <script src="/static/script/kassa.js"></script>
+        <script defer src="/static/script/kassa.js"></script>
     </head>
     <body>
         <header>
@@ -39,9 +39,30 @@
             <div id="summaDiv">
                 <p id="summaP">Sum:</p>
             </div>
-            <a href="">
-                <div id="buyBtn">Pay</div>
-            </a>
+
+            <div id="buyBtn">Pay</div>
+        </div>
+
+        <div id="moneyExchangepage">
+            <div class="exchange-container">
+                <h1>Summa : <span id="total_sum_checkout">0</span>kr</h1>
+                <h2>Vilka pengar betalar kunden med?</h2>
+
+                <div class="m-container">
+                    <script>
+                        api("/db/get_money", {}, data=>{
+                            Object.keys(data['types']).forEach(c=>{
+                                $('.m-container').append($(`
+                                    <div><p>${c}kr :</p><input type="number" min="0" moneyType="${c}"></div>
+                                `))
+                            })
+                        })
+                    </script>
+                </div>
+
+                <button id="checkout-pay">Betala</button>
+            </div>
+
         </div>
         
         <footer></footer>

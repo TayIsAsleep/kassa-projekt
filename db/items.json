@@ -6,7 +6,7 @@
         "image_src": "./static/img/product_img_1949812.png",
         "best_before": "2022-12-29T00:00:00.000Z",
         "product_id": "1949812",
-        "item_count": 513
+        "item_count": 100
     },
     "1200303": {
         "display_name": "hej",
@@ -15,16 +15,16 @@
         "image_src": "./static/img/product_img_1200303.png",
         "best_before": "2022-11-17T00:00:00.000Z",
         "product_id": "1200303",
-        "item_count": 50
+        "item_count": 37
     },
     "1412313": {
         "display_name": "lol",
         "category": "Others",
-        "price": 10.1,
+        "price": 10.0,
         "image_src": "./static/img/product_img_1412313.png",
         "best_before": "2022-11-10T00:00:00.000Z",
         "product_id": "1412313",
-        "item_count": 20
+        "item_count": 19
     },
     "13123156": {
         "display_name": "eqwewq",
@@ -42,7 +42,7 @@
         "image_src": "./static/img/product_img_1313125.png",
         "best_before": "2022-12-09T00:00:00.000Z",
         "product_id": "1313125",
-        "item_count": 30
+        "item_count": 27
     },
     "1312111": {
         "display_name": "kakak",
@@ -51,7 +51,7 @@
         "image_src": "./static/img/product_img_1312111.png",
         "best_before": null,
         "product_id": "1312111",
-        "item_count": 60
+        "item_count": 52
     },
     "1415901": {
         "display_name": "poggg",
@@ -60,7 +60,7 @@
         "image_src": "./static/img/product_img_1415901.png",
         "best_before": "2022-11-09T00:00:00.000Z",
         "product_id": "1415901",
-        "item_count": 20
+        "item_count": 18
     },
     "1581811": {
         "display_name": "poging",
