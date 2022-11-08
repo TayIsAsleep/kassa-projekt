@@ -138,35 +138,37 @@ let allproducts=(data)=>{
     $("#content").append(div);
 }
 
-var dateTemp={
-    now: "2022-11-08",
-    now2: "2022-11-25",
-    now3: "2022-12-06"
-};
+// Hämtar dagens datum och delar upp det till År Månad och Dag
 var date1 = new Date();
 var year = date1.getFullYear();
 var month = date1.getMonth() +1;
+// padStart Lägger till variabel / sträng "0" tills det uppnår den specificerade längden "2"
 var day = String(date1.getDate()).padStart(2,'0');
 
-// Jämnför månad och skriver ut allt som säldes under den månaden
-let köpMånad = (year,month) =>{
+api("/db/purchase_history", {}, data=>{
+    console.log(data)
+    // Jämnför månad och skriver ut allt som säldes under den månaden
+    let köpMånad = (year,month) =>{
+    // Lägger ihopp År och Månad med - mellan
     var fullDate = [year,month].join("-");
-    Object.keys(dateTemp).forEach(i => {
-        if(fullDate == dateTemp[i].slice(0,-3))
+    Object.keys(data).forEach(i => {
+        if(fullDate == date[i].date_of_transaction.slice(0,-3))
         {
-            console.log(dateTemp[i]);
+            console.log(data[i].date_of_transaction);
+            console.log(data[i].products_bought);
+            console.log(data[i].price_paid.total_money_in);
         }
     });}
-
-// Samme som functionen ovan men jämnför dagen också.
-let köpDag = (year,month,day) =>{
+    
+    // Samma som functionen ovan men jämnför dagen också.
+    let köpDag = (year,month,day) =>{
     var fullDate = [year,month,day].join("-");
-    Object.keys(dateTemp).forEach(i => {
-        if(fullDate == dateTemp[i])
+    Object.keys(data).forEach(i => {
+        if(fullDate == data[i].date_of_transaction)
         {
-            console.log(dateTemp[i]);
+            console.log(data[i].date_of_transaction);
+            console.log(data[i].products_bought);
+            console.log(data[i].price_paid.total_money_in);
         }
-    });
-}
-köpMånad(year, month)
-köpDag(year, month,day)
+    });}
+})
