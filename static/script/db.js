@@ -148,7 +148,7 @@ var day = String(date1.getDate()).padStart(2,'0');
 api("/db/purchase_history", {}, data=>{
     console.log(data)
     // Jämnför månad och skriver ut allt som säldes under den månaden
-    let köpMånad = (year,month) =>{
+    let boughtMonth = (year,month) =>{
     // Lägger ihopp År och Månad med - mellan
     var fullDate = [year,month].join("-");
     Object.keys(data).forEach(i => {
@@ -159,9 +159,9 @@ api("/db/purchase_history", {}, data=>{
             console.log(data[i].price_paid.total_money_in);
         }
     });}
-    
+
     // Samma som functionen ovan men jämnför dagen också.
-    let köpDag = (year,month,day) =>{
+    let boughtDay = (year,month,day) =>{
     var fullDate = [year,month,day].join("-");
     Object.keys(data).forEach(i => {
         if(fullDate == data[i].date_of_transaction)

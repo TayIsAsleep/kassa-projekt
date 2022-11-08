@@ -15,7 +15,7 @@
         "image_src": "./static/img/product_img_1200303.png",
         "best_before": "2022-11-17T00:00:00.000Z",
         "product_id": "1200303",
-        "item_count": 37
+        "item_count": 35
     },
     "1412313": {
         "display_name": "lol",
@@ -42,7 +42,7 @@
         "image_src": "./static/img/product_img_1313125.png",
         "best_before": "2022-12-09T00:00:00.000Z",
         "product_id": "1313125",
-        "item_count": 27
+        "item_count": 26
     },
     "1312111": {
         "display_name": "kakak",
@@ -51,7 +51,7 @@
         "image_src": "./static/img/product_img_1312111.png",
         "best_before": null,
         "product_id": "1312111",
-        "item_count": 52
+        "item_count": 51
     },
     "1415901": {
         "display_name": "poggg",
