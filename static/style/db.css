@@ -107,8 +107,8 @@ header{
 }
 
 .produkter{
-    width: 18vw;
-    height: 32vh;
+    width: 12vw;
+    height: 22vh;
     display: inline-block;
     margin:4vh;
     overflow: hidden;
@@ -151,7 +151,7 @@ header{
 
 @keyframes mymove {
     from {top: 110%; opacity:0}
-    to {top: 84%; opacity:100}
+    to {top: 76%; opacity:100}
   }
 
   /*Kund Vagn*/
