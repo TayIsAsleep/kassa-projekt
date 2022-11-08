@@ -271,7 +271,7 @@ span{
 }
 .valdaProdukter{
     width: 100%;
-    height: 13%;
+    height: 16%;
     margin-top: 5px;
     display: inline-block;
     position: relative;
@@ -343,16 +343,14 @@ span{
     text-align: center;
     background-color: #ffffff5f; /* Green */
     border: 1px solid #fbfbfb;
-  
   color: white;
   text-align: center;
   text-decoration: none;
   
   font-size: 16px;
-  
   transition-duration: 0.4s;
   cursor: pointer;
-    top: 85%;
+    top: 10%;
     margin: auto;
 transform: translateY(-85%);
 
@@ -369,6 +367,12 @@ transform: translateY(-85%);
 }
 
 
+#vagnProdukter{
+    display: inline-block;
+    overflow: scroll;
+    height: 75%;
+    width: 100%;
+}
 
 
 #moneyExchangepage{
