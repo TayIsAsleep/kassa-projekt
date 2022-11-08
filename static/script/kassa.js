@@ -120,7 +120,7 @@ let kundvagn = (id) =>
             let summa =+ $(`.pris${id}`).val();
             console.log(summa);
             div.append(img,paragraph,price, minus, plus, remove);
-            $("#kundVagn").append(div);
+            $("#vagnProdukter").append(div);
 
 
         }
