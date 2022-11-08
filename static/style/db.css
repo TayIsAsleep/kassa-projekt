@@ -3,13 +3,16 @@
     padding:0;
 }
 body{
-    font-family: Arial;
+    font-family: Arial, Georgia;
+    height:100%;
+    background-color: black;
 }
 header{
     width: 100vw;
-    height:10vh;
-    background:hsl(0, 0%, 90%);
-    border-bottom: 2px solid black;
+    height:9vh;
+    background:hsl(0, 0%, 0%);
+    border-bottom: 2px solid hsl(118, 95%, 24%);
+    padding-bottom: 1%;
 }
 #logoutBtn{
     float:right;
@@ -23,11 +26,11 @@ header{
     font-size:1.3rem;
     text-shadow:1px 2px 1px black;
     color:white;
-    background:hsl(0, 0%, 75%);
+    background:hsl(118, 95%, 24%);
     border: 1px solid black;
 }
 #logoutBtn:hover{
-    background:hsl(0, 0%, 62%);
+    background:hsl(118, 35%, 41%);
     box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 
@@ -43,21 +46,23 @@ header{
     font-size:1.3rem;
     text-shadow:1px 2px 1px black;
     color:white;
-    background:hsl(0, 0%, 75%);
+    background:hsl(118, 95%, 24%);
     border: 1px solid black;
 }
 #databaseBtn:hover{
-    background:hsl(0, 0%, 62%);
+    background:hsl(118, 35%, 41%);
     box-shadow:0 0 2px 1.5px rgb(214, 233, 240);
 }
 
 
 #nav{
-    width: 15vw;
-    height: 80vh;
-    background: hsl(0, 0%, 95%);
+    width: 10%;
+    height: 100%;
+    background: black;
+    color:white;
     float: left;
-    border-right:2px solid black;
+    border-right:2px solid hsl(118, 95%, 24%);
+    padding-bottom:113.5%;
 }
 .sortobject{
     display: flex;
@@ -65,15 +70,22 @@ header{
     transition: 0.3s;
     border-radius: 5px;
     width: 100%;
-    height: 10%;
+    height: 10vh;
     overflow: hidden;
     align-items: center;
     justify-content: center;
+    background-color:rgb(15, 15, 15);
+    border-bottom:1px solid hsl(118, 95%, 24%);
+    border-top:1px solid hsl(118, 95%, 24%);
+
 }
 .sortobject:hover{
-    box-shadow:0 0 1vh 0.5vh black;
+    box-shadow:0 0 1vh 0.5vh white;
     cursor: pointer;
     text-shadow: 0 0 10px white;
+}
+.sortobject:last-child{
+   
 }
 #nav>a{
     text-decoration: none;
@@ -86,10 +98,12 @@ header{
 /*Content*/
 
 #content{
-    width: 69vw;
-    height: 80vh;
+    float: left;
+    width: 70%;
+    height: 100%;
     display: inline-block;
     overflow: scroll;
+    background-color: black;
 }
 
 .produkter{
@@ -99,10 +113,11 @@ header{
     margin:4vh;
     overflow: hidden;
     position: relative;;
-    border: 2px solid black;
+    border: 2px solid hsl(118, 95%, 24%);
+    box-shadow:0px 0px 1px 0.4px white;
 }
 .produkter:hover{
-    text-shadow: 0.5px 0.5px 1px rgb(24, 183, 241);
+    text-shadow: 0.5px 0.5px 1px hsl(118, 95%, 24%);
 }
 .itemImage{
     width: 100%;
@@ -141,12 +156,72 @@ header{
 
   /*Kund Vagn*/
 #kundVagn{
-    float:right;
-    width: 15vw;
-    height: 80vh;
-    background: hsl(0, 0%, 95%);
+    float:left;
+    width: 19%;
+    height: 100%;
+    background:black;
     position: relative;
-    border-left:2px solid black;
+    padding-bottom: 2%;
+    border:2px solid hsl(118, 95%, 24%);
+    margin-top: 1%;
+    color: white;
+    text-shadow:0.5px 0.5px greenyellow;
+}
+#kundVagn>h2{
+    font-size:180%;
+    margin-bottom:5%;
+    margin-top:1%;
+    margin-left:5%;
+}
+#kundVagn>h3{
+    font-size:180%;
+    margin-bottom:5%;
+    margin-top:1%;
+    margin-left:5%;
+}
+#kundVagn>label{
+    margin-left:10%;
+}
+.srvinput{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid hsl(118, 95%, 24%);
+}
+.numinput{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid hsl(118, 95%, 24%);
+}
+#imageinput{
+     width:80%;
+    margin-left:10%;
+    margin-right:10%;
+}
+.dateinput{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid hsl(118, 95%, 24%);
+}
+#changebutton{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid hsl(118, 95%, 24%);
+    margin-top:1%;  
+}
+.categoryinput{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid hsl(118, 95%, 24%);
 }
 #buyBtn:hover{
     background:  hsl(0, 0%,40%);
@@ -166,20 +241,20 @@ footer{
     width: 100vw;
     margin-top:-4px;
     height: 15vh;
-    background:hsl(0, 0%, 75%);
+    background:hsl(0, 0%, 0%);
     float:left;
-    border-top:2px solid black;
+    border-top:2px solid hsl(118, 95%, 24%);
 }
 header>h1{
     float:left;
     margin-top:0.5%;
     margin-left:4%;
-    border:1vh black double;
+    border:1vh hsl(118, 95%, 24%) double;
     border-radius: 10px;
     padding-left:1%;
     padding-right:1%;  
     color:white; 
-    font-size:5.5vh;
+    font-size:5vh;
     text-shadow:0px 2px 3px black;
 }
 header>a{
@@ -207,8 +282,12 @@ span{
     position: relative;
 }
 #submitbutton{
-    height:5%;
-    width:25%;
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    height:3vh;
+    border:2px solid black;
+    margin-top:1%;
 }
 #submitbutton:hover{
 box-shadow: 0 0 2px 1.5px black;
