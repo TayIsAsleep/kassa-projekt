@@ -129,7 +129,7 @@ header{
 }
 
 .container{
-    background-color: white;
+    background-color: black;
     position: absolute;
     text-align: center;
     right: 50%;
@@ -139,10 +139,11 @@ header{
     padding: 10px 10px;
     width: 100%;
     font-size: 60%;
-    border-top: 2px solid black;
+    border-top: 2px solid hsl(118, 95%, 24%);
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     opacity: 0;
+    color: white;
 
 }
 .produkter:hover .container{
@@ -151,7 +152,7 @@ header{
 
 @keyframes mymove {
     from {top: 110%; opacity:0}
-    to {top: 76%; opacity:100}
+    to {top: 78%; opacity:100}
   }
 
   /*Kund Vagn*/
