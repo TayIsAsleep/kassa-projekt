@@ -80,7 +80,7 @@ header{
 
 }
 .sortobject:hover{
-    box-shadow:0 0 1vh 0.5vh white;
+    box-shadow:0 0 1vh 0.5vh hsl(118, 95%, 35%);
     cursor: pointer;
     text-shadow: 0 0 10px white;
 }

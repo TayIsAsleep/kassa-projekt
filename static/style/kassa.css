@@ -9,7 +9,6 @@ body{
 header{
     width: 100vw;
     height:10vh;
-    
     border-bottom: 2px solid black;
     background-color: #080d25;
 }
@@ -25,21 +24,18 @@ header{
     text-align: center;
     background-color: #ff00005f; /* Green */
     border: 1px solid #ff0000;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  
-  font-size: 16px;
-  
-  transition-duration: 0.4s;
-  cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 #logoutBtn:hover{
-    background:#ff0000;
-    
+    background:#ff0000; 
     -webkit-box-shadow:0px 0px 16px 2px rgba(255,46,46,0.9);
--moz-box-shadow: 0px 0px 16px 2px rgba(255,46,46,0.9);
-box-shadow: 0px 0px 16px 2px rgba(255,46,46,0.9);
+    -moz-box-shadow: 0px 0px 16px 2px rgba(255,46,46,0.9);
+    box-shadow: 0px 0px 16px 2px rgba(255,46,46,0.9);
 }
 
 #databaseBtn{
@@ -94,22 +90,21 @@ box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
     background-color: #00fbff5f; /* Green */
     border: 1px solid #00fbff;
   
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  
-  font-size: 16px;
-  
-  transition-duration: 0.4s;
-  cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+    transition-duration: 0.4s;
+    cursor: pointer;
 	
 }
 .sortobject:hover{
     background-color: #00fbffb7; /* Green */
     border: 1px solid #00fbff;
     -webkit-box-shadow:0px 0px 21px 2px rgba(24,247,247,0.9);
--moz-box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
-box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
+    -moz-box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
+    box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
 }
 
 .itemImage{
@@ -167,15 +162,25 @@ box-shadow: 0px 0px 21px 2px rgba(24,247,247,0.9);
     overflow: scroll;
     background-color: #0e1539
 }
+#allaprodukter{
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    float: left;
+    width: 100%;
+    height:100%;
+
+}
 
 .produkter{
     width: 18vw;
     min-width: 18vh;
     height: 32vh;
     display: inline-block;
-    margin:4vh;
     overflow: hidden;
     position: relative;;
+    margin-top:2%;
     border: 2px solid black;
     border-radius: 10px;
 }
@@ -343,16 +348,14 @@ span{
     text-align: center;
     background-color: #ffffff5f; /* Green */
     border: 1px solid #fbfbfb;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  
-  font-size: 16px;
-  transition-duration: 0.4s;
-  cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
     top: 10%;
     margin: auto;
-transform: translateY(-85%);
+    transform: translateY(-85%);
 
 }
 .plus{
@@ -382,7 +385,6 @@ transform: translateY(-85%);
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -398,7 +400,6 @@ transform: translateY(-85%);
     border-radius: 12px;
     /* width: fit-content;
     height: fit-content; */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
