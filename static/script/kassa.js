@@ -170,5 +170,4 @@ let remove = (id) =>{
     console.log(total);
     summa(total);
     vagn[id] = 0;
-
 }
