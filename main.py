@@ -145,6 +145,15 @@ def db_get_purchase_history():
             if delta.days < 0:
                 continue
         
+        if "after-Y/M/D" in post_data:
+            year1, month1, day1 = (int(x) for x in post_data["after-Y/M/D"].split("/"))
+            d1 = datetime(year1, month1, day1)
+            delta = d1 - d0
+
+            if delta.days >= 0:
+                continue
+
+        
         new_data.append(e)
     
     return jsonify(new_data)
