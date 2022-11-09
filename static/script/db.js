@@ -135,7 +135,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").hide();
-        $(".BoughtAdd").show();
+        $(".BoughtDay").hide();
     }
     else if (this.getAttribute("category") === "Drinks"){
         $(".Food").hide();
@@ -143,7 +143,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").hide();
-        $(".BoughtAdd").show();
+        $(".BoughtDay").hide();
     }
     else if (this.getAttribute("category") === "All"){
         $(".Food").show();
@@ -151,7 +151,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").show();
         $(".Others").show();
         $(".BoughtMonth").hide();        
-        $(".BoughtAdd").show();
+        $(".BoughtDay").hide();
     }
     else if (this.getAttribute("category") === "Snacks"){
         $(".Food").hide();
@@ -159,7 +159,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").show();
         $(".Others").hide();
         $(".BoughtMonth").hide();
-        $(".BoughtAdd").show();
+        $(".BoughtDay").hide();
     }
     else if (this.getAttribute("category") === "Others"){
         $(".Food").hide();
@@ -167,7 +167,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").show();
         $(".BoughtMonth").hide();
-        $(".BoughtAdd").show();
+        $(".BoughtDay").hide();
         }
     else if (this.getAttribute("category") === "BoughtMonth"){
         $(".Food").hide();
@@ -279,8 +279,7 @@ let BoughtMonth = (year,month,boughtdata) =>{
             });
             var name = $("<p>").attr({"class":"productname BoughtMonth"}).html(`${boughtProd}`);
             var price = $("<p>").attr({"class":"price BoughtMonth"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
-            var br = $("<br>");
-            $("#content").append(name,price,br);
+            $("#content").append(name,price);
         }
     })
 };
