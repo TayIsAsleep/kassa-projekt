@@ -187,7 +187,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").hide();
-        $(".BoughtAdd").show();
+        $(".BoughtDay").show();
         if(boti2 == 0)
         BoughtDay(year,month,day,boughtdata);
 
