@@ -276,7 +276,7 @@ let BoughtMonth = (year,month,boughtdata) =>{
             // Bara en temp variabel för att hålla objectet
             let myObjBD = boughtdata[i].products_bought;
             Object.keys(boughtdata[i].products_bought).forEach(i => {
-                boughtProd = boughtProd.concat(i, ", ") + `${myObjBD[i]}x `;
+                boughtProd = boughtProd.concat(i, " ") + `${myObjBD[i]}x , `;
             });
             var name = $("<p>").attr({"class":"productname BoughtMonth"}).html(`${boughtProd}`);
             var price = $("<p>").attr({"class":"price BoughtMonth"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
@@ -298,7 +298,7 @@ let BoughtDay = (year,month,day,boughtdata) =>{
             // Bara en temp variabel för att hålla objectet
             let myObjBD = boughtdata[i].products_bought;
             Object.keys(boughtdata[i].products_bought).forEach(i => {
-                boughtProd = boughtProd.concat(i, ", ") + `${myObjBD[i]}x `;
+                boughtProd = boughtProd.concat(i, " ") + `${myObjBD[i]}x , `;
             });
             var name = $("<p>").attr({"class":"productname BoughtDay"}).html(`${boughtProd}`);
             var price = $("<p>").attr({"class":"price BoughtDay"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
