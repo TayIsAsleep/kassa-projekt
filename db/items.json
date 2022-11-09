@@ -24,7 +24,7 @@
         "image_src": "./static/img/product_img_1412313.png",
         "best_before": "2022-11-10T00:00:00.000Z",
         "product_id": "1412313",
-        "item_count": 19
+        "item_count": 17
     },
     "13123156": {
         "display_name": "eqwewq",
@@ -42,7 +42,7 @@
         "image_src": "./static/img/product_img_1313125.png",
         "best_before": "2022-12-09T00:00:00.000Z",
         "product_id": "1313125",
-        "item_count": 26
+        "item_count": 25
     },
     "1415901": {
         "display_name": "poggg",
@@ -60,6 +60,6 @@
         "image_src": "./static/img/product_img_1581811.png",
         "best_before": "2022-11-23T00:00:00.000Z",
         "product_id": "1581811",
-        "item_count": 16
+        "item_count": 15
     }
 }

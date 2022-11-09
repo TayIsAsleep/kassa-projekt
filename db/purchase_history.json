@@ -81,5 +81,21 @@
                 "100": 1
             }
         }
+    },
+    {
+        "date_of_transaction": "2022-11-09 13:20:07",
+        "products_bought": {
+            "1313125": 1,
+            "1412313": 2,
+            "1581811": 1
+        },
+        "price_paid": {
+            "total_money_in": 43.0,
+            "notations_changed": {
+                "2": -1,
+                "5": -1,
+                "50": 1
+            }
+        }
     }
 ]

@@ -6,6 +6,7 @@ var month = date1.getMonth() +1;
 var day = String(date1.getDate()).padStart(2,'0');
 // Temp variabel
 var boti = 0;
+var boti2 = 0;
 const boughtdata =[
     {
         "date_of_transaction": "2022-11-08 10:54:14",
@@ -74,7 +75,7 @@ const boughtdata =[
         }
     },
     {
-        "date_of_transaction": "2022-11-08 11:11:44",
+        "date_of_transaction": "2022-11-09 11:11:44",
         "products_bought": {
             "1312111": 1,
             "1415901": 1,
@@ -89,7 +90,7 @@ const boughtdata =[
                 "100": 1
             }
         }
-    }
+    },
 ]
 var vagn={
 
@@ -134,6 +135,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").hide();
+        $(".BoughtAdd").show();
     }
     else if (this.getAttribute("category") === "Drinks"){
         $(".Food").hide();
@@ -141,13 +143,15 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").hide();
+        $(".BoughtAdd").show();
     }
     else if (this.getAttribute("category") === "All"){
         $(".Food").show();
         $(".Drinks").show();
         $(".Snacks").show();
         $(".Others").show();
-        $(".BoughtMonth").hide();
+        $(".BoughtMonth").hide();        
+        $(".BoughtAdd").show();
     }
     else if (this.getAttribute("category") === "Snacks"){
         $(".Food").hide();
@@ -155,6 +159,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").show();
         $(".Others").hide();
         $(".BoughtMonth").hide();
+        $(".BoughtAdd").show();
     }
     else if (this.getAttribute("category") === "Others"){
         $(".Food").hide();
@@ -162,6 +167,7 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").show();
         $(".BoughtMonth").hide();
+        $(".BoughtAdd").show();
         }
     else if (this.getAttribute("category") === "BoughtMonth"){
         $(".Food").hide();
@@ -169,10 +175,23 @@ api("/db/get_items", {}, data=>{
         $(".Snacks").hide();
         $(".Others").hide();
         $(".BoughtMonth").show();
+        $(".BoughtDay").hide();
         if(boti == 0)
         BoughtMonth(year,month,boughtdata);
         
         boti++;
+    }
+    else if (this.getAttribute("category") === "BoughtDay"){
+        $(".Food").hide();
+        $(".Drinks").hide();
+        $(".Snacks").hide();
+        $(".Others").hide();
+        $(".BoughtMonth").hide();
+        $(".BoughtAdd").show();
+        if(boti2 == 0)
+        BoughtDay(year,month,day,boughtdata);
+
+        boti2++;
     }
     })
     //När submitbutton klickas så tar denna funktion values för inputs
@@ -253,11 +272,32 @@ let BoughtMonth = (year,month,boughtdata) =>{
         var boughtProd = "";
         if(fullDate == boughtdata[i].date_of_transaction.slice(0,-12))
         {
+            // Bara en temp variabel för att hålla objectet
+            let myObjBD = boughtdata[i].products_bought;
             Object.keys(boughtdata[i].products_bought).forEach(i => {
-                boughtProd = boughtProd.concat(i, ",");
+                boughtProd = boughtProd.concat(i, ", ") + `${myObjBD[i]}x `;
             });
             var name = $("<p>").attr({"class":"productname BoughtMonth"}).html(`${boughtProd}`);
             var price = $("<p>").attr({"class":"price BoughtMonth"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
+            var br = $("<br>");
+            $("#content").append(name,price,br);
+        }
+    })
+};
+let BoughtDay = (year,month,day,boughtdata) =>{
+    // Lägger ihopp År och Månad med - mellan
+    var fullDate = [year,month,day].join("-");
+    Object.keys(boughtdata).forEach(i => {
+        var boughtProd = "";
+        if(fullDate == boughtdata[i].date_of_transaction.slice(0,-9))
+        {
+            // Bara en temp variabel för att hålla objectet
+            let myObjBD = boughtdata[i].products_bought;
+            Object.keys(boughtdata[i].products_bought).forEach(i => {
+                boughtProd = boughtProd.concat(i, ", ") + `${myObjBD[i]}x `;
+            });
+            var name = $("<p>").attr({"class":"productname BoughtDay"}).html(`${boughtProd}`);
+            var price = $("<p>").attr({"class":"price BoughtDay"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
             var br = $("<br>");
             $("#content").append(name,price,br);
         }
