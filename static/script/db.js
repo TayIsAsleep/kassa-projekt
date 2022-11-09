@@ -304,23 +304,5 @@ let BoughtDay = (year,month,day,boughtdata) =>{
     })
 };
 // api("/db/purchase_history", {}, data=>{
-//     // console.log(data)
-
-//     let BoughtMonth = (year,month,boughtdata) =>{
-    // Lägger ihopp År och Månad med - mellan
-//     var fullDate = [year,month].join("-");
-//     Object.keys(boughtdata).forEach(i => {
-//         var boughtProd = "";
-//         if(fullDate == boughtdata[i].date_of_transaction.slice(0,-12))
-//         {
-//             Object.keys(boughtdata[i].products_bought).forEach(i => {
-//                 boughtProd = boughtProd.concat(i, ",");
-//             });
-//             var name = $("<p>").attr({"class":"productname BoughtMonth"}).html(`${boughtProd}`);
-//             var price = $("<p>").attr({"class":"price BoughtMonth"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
-//             var br = $("<br>");
-//             $("#content").append(name,price,br);
-//         }
-//     })
-// };
+// Koperia in BoughtMonth / BoughtDay här sen när API path är definerad
 // })
