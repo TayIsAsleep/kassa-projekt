@@ -44,7 +44,8 @@ def before_request_callback():
         "/db/get_money",
         "/db/change_money",
         "/db/calc_change",
-        "/db/make_purchase"
+        "/db/make_purchase",
+        "/db/get_purchase_history"
     )
     if path in path_that_needs_token:
         try:
