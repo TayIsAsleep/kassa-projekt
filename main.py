@@ -206,11 +206,14 @@ def db_make_purchase():
         if notations_changed[key] == 0:
             del notations_changed[key]
 
+    
+
     # Make purchase history and add to DB
     db_purchase_history = load_db(db_purchase_history_src)
     db_purchase_history.append({
         "date_of_transaction": datetime.today().strftime('%Y-%m-%d %H:%M:%S'),
         "products_bought": post_data['products_bought'],
+        "cashier": user_pool["admin"][post_data["token"]]['username'],
         "price_paid":{
             "total_money_in": total_price_to_pay,
             "notations_changed": notations_changed
