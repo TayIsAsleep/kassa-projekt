@@ -116,6 +116,39 @@ def db_calc_change():
     post_data = request.get_json(force=True)
     return jsonify(växla_pengar(post_data['money'], post_data['total_cost'])) 
 
+@app.route("/db/get_purchase_history", methods=['GET', 'POST'])
+def db_get_purchase_history():
+    data = get_purchase_history()
+    try:
+        post_data = request.get_json(force=True)
+    except Exception as e:
+        return jsonify(data)
+    
+    new_data = []
+    for e in data:
+        year, month, day, hour, minute, second = (int(x) for x in re.findall('\d*', e['date_of_transaction']) if x != "")
+        
+        d0 = datetime(year, month, day, hour, minute, second)
+
+        if "max-age" in post_data:
+            d1 = datetime.now()
+            delta = d1 - d0
+            
+            if delta.days > int(post_data["max-age"]):
+                continue
+        
+        if "before-Y/M/D" in post_data:
+            year1, month1, day1 = (int(x) for x in post_data["before-Y/M/D"].split("/"))
+            d1 = datetime(year1, month1, day1)
+            delta = d1 - d0
+
+            if delta.days < 0:
+                continue
+        
+        new_data.append(e)
+    
+    return jsonify(new_data)
+
 @app.route("/db/make_purchase", methods=['GET', 'POST'])
 def db_make_purchase():
     post_data = request.get_json(force=True)
@@ -342,6 +375,10 @@ if __name__ == "__main__":
         else:
             return [-1, "product total can not be less than 0, no changes was made", db[product_id]["item_count"]]
 
+    def get_purchase_history():
+        db = load_db(db_purchase_history_src)
+        return db
+    
     def get_money():
         """
             Will read and return the money currently in the DB
