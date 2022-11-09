@@ -266,6 +266,7 @@ let allproducts=(data)=>{
 
 
 let BoughtMonth = (year,month,boughtdata) =>{
+    var boughtTotall = 0;
     // Lägger ihopp År och Månad med - mellan
     var fullDate = [year,month].join("-");
     Object.keys(boughtdata).forEach(i => {
@@ -280,10 +281,14 @@ let BoughtMonth = (year,month,boughtdata) =>{
             var name = $("<p>").attr({"class":"productname BoughtMonth"}).html(`${boughtProd}`);
             var price = $("<p>").attr({"class":"price BoughtMonth"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
             $("#content").append(name,price);
+            boughtTotall += boughtdata[i].price_paid.total_money_in;
         }
     })
+    var totall = $("<p>").attr({"class":"productname BoughtMonth"}).html(`Totall: ${boughtTotall}kr`);
+    $("#content").append(totall);
 };
 let BoughtDay = (year,month,day,boughtdata) =>{
+    var boughtTotall = 0;
     // Lägger ihopp År och Månad med - mellan
     var fullDate = [year,month,day].join("-");
     Object.keys(boughtdata).forEach(i => {
@@ -299,8 +304,12 @@ let BoughtDay = (year,month,day,boughtdata) =>{
             var price = $("<p>").attr({"class":"price BoughtDay"}).html(`${boughtdata[i].price_paid.total_money_in} kr`);
             var br = $("<br>");
             $("#content").append(name,price,br);
+            boughtTotall += boughtdata[i].price_paid.total_money_in;
+
         }
     })
+    var totall = $("<p>").attr({"class":"productname BoughtDay"}).html(`Totall: ${boughtTotall}kr`);
+    $("#content").append(totall);
 };
 // api("/db/purchase_history", {}, data=>{
 // Koperia in BoughtMonth / BoughtDay här sen när API path är definerad
