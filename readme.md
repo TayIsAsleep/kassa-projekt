@@ -22,7 +22,7 @@ I kassa.js så gjordes en funktion som lägger till produktens bild man klickar 
 
 db.js använder samma sorteringssystem som kassa.js och är för det mesta rätt likt i designen. Den största skillnaden på databas
 sidan är att den inte har någon kundvagn utan har istället en sektion där man kan lägga till produkter i lagret, både nya
-och gamla. Detta gjordes via att skapa inputs i html filen och ta dess värden in i javascript variabler via en jquery onclick funktion som tar hjälp av python filen med en api och lägger till en ny produkt med värden av variablerna. I db.js lades även bäst före datum och likande in i produkternas information. 
+och gamla. Detta gjordes via att skapa inputs i html filen och ta dess värden in i javascript variabler via en jquery onclick funktion som tar hjälp av python filen med en api och lägger till en ny produkt med värden av variablerna. I db.js lades även bäst före datum och liknande in i produkternas information. 
 
 Designen på kassasidan har neonfärger för att ge ett rätt rent utseende. Strukturen på designen är något som definitivt hade kunnit gå bättre för oss, detta är mest för att vi planerade strukturen rätt dåligt. Om vi hade planerat exakt vad vi ville göra med strukturen eller hade använt bootstrap från början så hade antagligen det gått bättre. 
 
